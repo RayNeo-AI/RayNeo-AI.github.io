@@ -1,0 +1,270 @@
+
+你说：
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayneo AI Lab - 定义未来的虚实交互智能</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rayneo: {
+                            blue: '#38BDF8',
+                            dark: '#0F172A',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义渐变文字 */
+        .text-gradient {
+            background: linear-gradient(90deg, #0F172A 0%, #38BDF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 模拟AR眼镜镜片的微光效果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.15), 0 10px 10px -5px rgba(56, 189, 248, 0.1);
+            border-color: #38BDF8;
+        }
+
+        /* 背景网格动画 */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Rayneo<span class="font-light">Research</span></span>
+                </div>
+                
+                <!-- 中间链接 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-slate-600 hover:text-blue-500 font-medium transition">首页</a>
+                    <a href="#team" class="text-slate-600 hover:text-blue-500 font-medium transition">团队介绍</a>
+                    <a href="#research" class="text-slate-600 hover:text-blue-500 font-medium transition">研究成果</a>
+                    <a href="#careers" class="text-slate-600 hover:text-blue-500 font-medium transition">加入我们</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-500 font-medium transition">博客</a>
+                </div>
+
+                <!-- 社交图标 -->
+                <div class="flex items-center space-x-4 text-slate-400">
+                    <a href="#" class="hover:text-black transition"><i class="fab fa-github text-xl"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (首屏) -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <!-- 装饰背景 -->
+        <div class="absolute inset-0 z-0 bg-grid opacity-30"></div>
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-1/3 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-8 border border-blue-100">
+                <i class="fas fa-glasses mr-2"></i> RAYNEO AI LAB
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight">
+                定义未来的<br>
+                <span class="text-gradient">虚实交互智能</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                我们探索<span class="text-blue-600 font-semibold">大模型 (LLM)</span> 与 <span class="text-blue-600 font-semibold">增强现实 (AR)</span> 的边界，<br>
+                赋予智能眼镜理解世界的能力。<br>
+                <span class="text-sm mt-2 block opacity-75">在这里，算法不仅仅是代码，而是通往未来的眼睛。</span>
+            </p>
+
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#research" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-blue-600 transition shadow-lg hover:shadow-blue-500/30 flex items-center">
+                    探索研究成果 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#team" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold hover:border-blue-300 hover:text-blue-600 transition shadow-sm">
+                    了解团队
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 (Stats) -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Stat Card 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">20+</div>
+                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">顶级论文 (CVPR/ICCV)</div>
+                </div>
+                <!-- Stat Card 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">50+</div>
+                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">核心专利</div>
+                </div>
+                <!-- Stat Card 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">10+</div>
+                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">开源项目</div>
+                </div>
+                <!-- Stat Card 4 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">30+</div>
+                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">研究员</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重点研究 (Research Highlights) -->
+    <section id="research" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
+                <span class="w-2 h-8 bg-blue-500 rounded mr-4"></span>
+                近期成果 & 产品应用
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Research Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group">
+                    <div class="h-48 bg-slate-200 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-10 group-hover:opacity-20 transition"></div>
+                        <i class="fas fa-eye text-6xl text-slate-300"></i>
+                        <!-- 这里应该放论文/项目配图 -->
+                        <div class="absolute bottom-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">CVPR 2025</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition">Rayneo-Multimodal: 眼镜端侧多模态大模型</h3>
+                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                            针对低功耗穿戴设备优化的轻量级多模态模型，实现了实时的第一视角场景理解与问答，延迟低于500ms。
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-sm font-semibold text-blue-600 hover:underline"><i class="far fa-file-pdf mr-1"></i> Paper</a>
+                            <a href="#" class="text-sm font-semibold text-slate-600 hover:text-black hover:underline"><i class="fab fa-github mr-1"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group">
+                    <div class="h-48 bg-slate-200 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-400 opacity-10 group-hover:opacity-20 transition"></div>
+                        <i class="fas fa-project-diagram text-6xl text-slate-300"></i>
+                         <!-- 这里应该放论文/项目配图 -->
+                         <div class="absolute bottom-4 right-4 bg-green-600/90 text-white text-xs px-2 py-1 rounded">Open Source</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition">SLAM-LLM Agent: 空间记忆智能体</h3>
+                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                            结合SLAM技术与LLM推理能力，让智能眼镜具备“空间记忆”，能够回答“我的钥匙放在哪里了？”等情境问题。
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-sm font-semibold text-blue-600 hover:underline"><i class="fas fa-laptop-code mr-1"></i> Demo</a>
+                            <a href="#" class="text-sm font-semibold text-slate-600 hover:text-black hover:underline"><i class="fab fa-github mr-1"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 招聘信息 (Careers) -->
+    <section id="careers" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- 装饰背景代码 -->
+        <div class="absolute top-0 right-0 p-10 opacity-10 font-mono text-sm hidden md:block select-none">
+            def create_future():<br>
+            &nbsp;&nbsp;vision = load_model("rayneo_v2")<br>
+            &nbsp;&nbsp;world = ar_glass.capture()<br>
+            &nbsp;&nbsp;return vision(world)
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl font-bold mb-6">加入我们，编写未来的“视界”</h2>
+            <p class="text-slate-400 mb-10 max-w-2xl mx-auto">
+                我们需要对 AI、计算机视觉和 AR 充满热情的你。我们提供极具竞争力的薪酬和海量的 GPU 算力支持。
+            </p>
+
+            <div class="grid gap-4 text-left">
+                <!-- Job 1 -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
+                    <div>
+                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">大模型算法研究员 (LLM/Multimodal)</h4>
+                        <p class="text-sm text-slate-400 mt-1">北京/深圳 · 全职</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
+                </div>
+                <!-- Job 2 -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
+                    <div>
+                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">3D视觉/SLAM 算法工程师</h4>
+                        <p class="text-sm text-slate-400 mt-1">深圳 · 全职</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
+                </div>
+                 <!-- Job 3 -->
+                 <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
+                    <div>
+                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">端侧模型部署优化专家</h4>
+                        <p class="text-sm text-slate-400 mt-1">深圳 · 全职</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
+                </div>
+            </div>
+
+            <button class="mt-10 px-8 py-3 border border-blue-500 text-blue-400 rounded hover:bg-blue-500 hover:text-white transition">
+                查看所有职位
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-10 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-bold text-slate-700">Rayneo<span class="font-light">Research</span></span>
+                <p class="text-xs text-slate-400 mt-2">© 2024 Rayneo AI Lab. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">Github</a>
+                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">HuggingFace</a>
+                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">Twitter</a>
+                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
