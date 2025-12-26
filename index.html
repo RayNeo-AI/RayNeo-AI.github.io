@@ -1,265 +1,362 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayneo AI Lab - 定义未来的虚实交互智能</title>
+    <title>Rayneo AI Lab - 大模型算法部</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        rayneo: {
-                            blue: '#38BDF8',
-                            dark: '#0F172A',
-                            light: '#F8FAFC'
+                        tech: {
+                            bg: '#050b14',       // 深空黑背景
+                            card: '#0f172a',     // 卡片背景
+                            blue: '#00f0ff',     // 赛博蓝
+                            purple: '#bd00ff',   // 霓虹紫
+                            text: '#94a3b8'      // 灰色文字
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'], // 代码字体
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* 自定义渐变文字 */
-        .text-gradient {
-            background: linear-gradient(90deg, #0F172A 0%, #38BDF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* 模拟AR眼镜镜片的微光效果 */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.15), 0 10px 10px -5px rgba(56, 189, 248, 0.1);
-            border-color: #38BDF8;
+        /* 核心背景效果 */
+        body {
+            background-color: #050b14;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* 背景网格动画 */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
-            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        /* 动态网格背景 */
+        .bg-grid-tech {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        /* 玻璃拟态卡片 */
+        .tech-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* 霓虹文字 */
+        .text-neon {
+            background: linear-gradient(90deg, #00f0ff, #bd00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="antialiased">
+
+    <!-- 背景光效 -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-tech-blue/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-tech-purple/20 rounded-full blur-[120px]"></div>
+        <div class="absolute inset-0 bg-grid-tech z-0"></div>
+    </div>
 
     <!-- 导航栏 -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#050b14]/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                    <span class="font-bold text-xl tracking-tight text-slate-900">Rayneo<span class="font-light">Research</span></span>
+                <div class="flex items-center gap-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-tech-blue to-tech-purple rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.5)]">
+                        <span class="text-white font-bold text-xl">R</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-wider">Rayneo<span class="font-light text-tech-blue">AI</span></span>
                 </div>
                 
-                <!-- 中间链接 -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-slate-600 hover:text-blue-500 font-medium transition">首页</a>
-                    <a href="#team" class="text-slate-600 hover:text-blue-500 font-medium transition">团队介绍</a>
-                    <a href="#research" class="text-slate-600 hover:text-blue-500 font-medium transition">研究成果</a>
-                    <a href="#careers" class="text-slate-600 hover:text-blue-500 font-medium transition">加入我们</a>
-                    <a href="#" class="text-slate-600 hover:text-blue-500 font-medium transition">博客</a>
+                <!-- 链接 -->
+                <div class="hidden md:flex space-x-10">
+                    <a href="#" class="text-sm font-medium hover:text-tech-blue transition duration-300">首页</a>
+                    <a href="#team" class="text-sm font-medium hover:text-tech-blue transition duration-300">团队介绍</a>
+                    <a href="#research" class="text-sm font-medium hover:text-tech-blue transition duration-300">研究成果</a>
+                    <a href="#join" class="text-sm font-medium hover:text-tech-blue transition duration-300">加入我们</a>
                 </div>
 
-                <!-- 社交图标 -->
-                <div class="flex items-center space-x-4 text-slate-400">
-                    <a href="#" class="hover:text-black transition"><i class="fab fa-github text-xl"></i></a>
-                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                <!-- Github Only -->
+                <div>
+                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition group">
+                        <i class="fab fa-github text-xl text-white group-hover:text-tech-blue"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (首屏) -->
-    <section class="relative pt-32 pb-20 overflow-hidden">
-        <!-- 装饰背景 -->
-        <div class="absolute inset-0 z-0 bg-grid opacity-30"></div>
-        <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute top-1/3 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-
-        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-8 border border-blue-100">
-                <i class="fas fa-glasses mr-2"></i> RAYNEO AI LAB
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-20 z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <!-- 标签 -->
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-tech-blue/30 bg-tech-blue/10 text-tech-blue text-xs font-mono mb-8 animate-pulse-slow">
+                <span class="w-2 h-2 bg-tech-blue rounded-full mr-2 animate-ping"></span>
+                RAYNEO LARGE MODEL ALGORITHM DEPT
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight">
-                定义未来的<br>
-                <span class="text-gradient">虚实交互智能</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                构建未来的 <span class="text-neon">空间智能体</span>
             </h1>
             
-            <p class="mt-4 text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                我们探索<span class="text-blue-600 font-semibold">大模型 (LLM)</span> 与 <span class="text-blue-600 font-semibold">增强现实 (AR)</span> 的边界，<br>
-                赋予智能眼镜理解世界的能力。<br>
-                <span class="text-sm mt-2 block opacity-75">在这里，算法不仅仅是代码，而是通往未来的眼睛。</span>
+            <p class="mt-4 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                我们是雷鸟大模型算法部门。
+                <br class="hidden md:block">
+                负责面向智能眼镜的<span class="text-white font-semibold">端云协同AI平台搭建</span>，以及一系列<span class="text-white font-semibold">智能体 (Agents)</span> 构建。
+                <br>
+                从语音交互到多模态理解，赋予眼镜真正的认知能力。
             </p>
 
-            <div class="mt-10 flex justify-center gap-4">
-                <a href="#research" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-blue-600 transition shadow-lg hover:shadow-blue-500/30 flex items-center">
-                    探索研究成果 <i class="fas fa-arrow-right ml-2"></i>
+            <div class="mt-12 flex justify-center gap-6">
+                <a href="#team" class="px-8 py-4 bg-tech-blue text-black font-bold rounded-lg hover:bg-white hover:shadow-[0_0_20px_rgba(0,240,255,0.6)] transition duration-300">
+                    认识团队
                 </a>
-                <a href="#team" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold hover:border-blue-300 hover:text-blue-600 transition shadow-sm">
-                    了解团队
+                <a href="#research" class="px-8 py-4 bg-transparent border border-white/20 text-white rounded-lg hover:border-tech-purple hover:text-tech-purple transition duration-300">
+                    查看产出
                 </a>
+            </div>
+
+            <!-- 架构关键词浮动 -->
+            <div class="mt-20 flex flex-wrap justify-center gap-4 opacity-60 text-sm font-mono text-slate-500">
+                <span class="px-3 py-1 border border-white/5 rounded"># 端侧ASR+NLU</span>
+                <span class="px-3 py-1 border border-white/5 rounded"># 意图识别</span>
+                <span class="px-3 py-1 border border-white/5 rounded"># 主动记忆</span>
+                <span class="px-3 py-1 border border-white/5 rounded"># 空间智能</span>
             </div>
         </div>
     </section>
 
-    <!-- 数据统计 (Stats) -->
-    <section class="py-12 bg-white">
+    <!-- 团队介绍 (重点修改) -->
+    <section id="team" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Stat Card 1 -->
-                <div class="glass-card p-8 rounded-2xl text-center">
-                    <div class="text-4xl font-bold text-slate-900 mb-2">20+</div>
-                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">顶级论文 (CVPR/ICCV)</div>
+            <!-- 标题 -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet The Team</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-tech-blue to-tech-purple mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Leader Spotlight -->
+            <div class="mb-20">
+                <div class="tech-card rounded-2xl p-8 md:p-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+                    <!-- Leader 头像框 -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-tech-blue to-tech-purple rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-white/10 bg-slate-800">
+                            <!-- 请在这里替换 Leader 的照片 -->
+                            <img src="https://ui-avatars.com/api/?name=Leader&background=0f172a&color=38bdf8&size=256" alt="Team Leader" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Leader 介绍 -->
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-block px-3 py-1 bg-tech-purple/20 text-tech-purple text-xs font-bold rounded mb-4">TEAM LEADER</div>
+                        <h3 class="text-3xl font-bold text-white mb-2">大模型算法负责人</h3>
+                        <p class="text-tech-blue font-mono mb-6">@Rayneo AI Lab</p>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            带领团队探索 AR 与 AI 的融合边界。我们致力于构建下一代人机交互范式，让智能眼镜成为用户连接数字世界与物理世界的桥梁。
+                            <br><br>
+                            <em class="text-slate-500 text-sm">"互相成就，AI向善，改变世界。"</em>
+                        </p>
+                        <!-- 可以加上Leader的个人主页链接 -->
+                        <div class="flex gap-4 justify-center md:justify-start">
+                             <a href="#" class="text-slate-400 hover:text-white transition"><i class="fas fa-globe"></i> 个人主页</a>
+                             <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Stat Card 2 -->
-                <div class="glass-card p-8 rounded-2xl text-center">
-                    <div class="text-4xl font-bold text-slate-900 mb-2">50+</div>
-                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">核心专利</div>
+            </div>
+
+            <!-- 团队性质与目标 (Grid布局) -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <!-- 部门介绍 -->
+                <div class="tech-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-dna text-8xl text-tech-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fas fa-users-cog mr-3 text-tech-blue"></i> 团队基因
+                    </h3>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start">
+                            <span class="text-tech-blue mr-3 mt-1">▹</span>
+                            <span><strong>公司最年轻、最特殊的团队：</strong> 我们拥有极高的实习生占比和极高的人才密度，充满活力与极客精神。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-tech-blue mr-3 mt-1">▹</span>
+                            <span><strong>全链路覆盖：</strong> 从语音团队到大模型团队，涵盖 ASR, NLU, 意图识别及主动记忆项目。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-tech-blue mr-3 mt-1">▹</span>
+                            <span><strong>扁平化管理：</strong> 鼓励创新，每一个想法都值得被听见。</span>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Stat Card 3 -->
-                <div class="glass-card p-8 rounded-2xl text-center">
-                    <div class="text-4xl font-bold text-slate-900 mb-2">10+</div>
-                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">开源项目</div>
+
+                <!-- 部门目标 -->
+                <div class="tech-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-rocket text-8xl text-tech-purple"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fas fa-bullseye mr-3 text-tech-purple"></i> 核心目标
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-white font-bold mb-1">⚡ 效率足够快</h4>
+                            <p class="text-sm text-slate-400">能以最快的速度完成"建立认知 - 落地 - 创新"的闭环链路。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">🦎 适应性足够强</h4>
+                            <p class="text-sm text-slate-400">当技术快速变化达到突破时，能第一时间做出判断并快速调整。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">❤️ 文化氛围足够好</h4>
+                            <p class="text-sm text-slate-400">互相成就，AI 向善，用代码改变世界。</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Stat Card 4 -->
-                <div class="glass-card p-8 rounded-2xl text-center">
-                    <div class="text-4xl font-bold text-slate-900 mb-2">30+</div>
-                    <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">研究员</div>
+            </div>
+
+            <!-- 团队相册 (Gallery) -->
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-white mb-6 pl-4 border-l-4 border-tech-blue">Life at Rayneo AI</h3>
+                <!-- 这里使用 Grid 布局展示您提供的照片 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-80">
+                    <!-- 照片 1: 大图 -->
+                    <div class="md:col-span-1 h-64 md:h-full relative group overflow-hidden rounded-xl border border-white/10">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition"></div>
+                        <!-- 这里的 src 替换为您的 team1.jpg (海边合照) -->
+                        <img src="team1.jpg" alt="Team Building Beach" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-white font-bold text-lg">Work Hard, Play Hard</span>
+                            <p class="text-xs text-slate-300">海边团建</p>
+                        </div>
+                    </div>
+
+                    <!-- 照片 2 -->
+                    <div class="md:col-span-1 h-64 md:h-full relative group overflow-hidden rounded-xl border border-white/10">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition"></div>
+                        <!-- 这里的 src 替换为您的 team2.jpg (聚餐) -->
+                        <img src="team2.jpg" alt="Team Dinner" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-white font-bold text-lg">Celebrate Together</span>
+                            <p class="text-xs text-slate-300">聚餐时光</p>
+                        </div>
+                    </div>
+
+                    <!-- 照片 3 -->
+                    <div class="md:col-span-1 h-64 md:h-full relative group overflow-hidden rounded-xl border border-white/10">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition"></div>
+                        <!-- 这里的 src 替换为您的 team3.jpg (办公室圣诞) -->
+                        <img src="team3.jpg" alt="Office Life" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-white font-bold text-lg">Geek Christmas</span>
+                            <p class="text-xs text-slate-300">办公室日常</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 重点研究 (Research Highlights) -->
-    <section id="research" class="py-20 bg-slate-50">
+    <!-- 研究成果 (预留位置) -->
+    <section id="research" class="py-24 bg-black/20">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
-                <span class="w-2 h-8 bg-blue-500 rounded mr-4"></span>
-                近期成果 & 产品应用
+            <h2 class="text-3xl font-bold mb-12 flex items-center">
+                <span class="text-tech-blue mr-2">/</span> Selected Research
             </h2>
+
+            <!-- 这是一个等待内容的布局 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 占位卡片 1 -->
+                <div class="tech-card h-64 rounded-xl p-6 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-700 hover:border-tech-blue group cursor-pointer transition">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-tech-blue/20 transition">
+                        <i class="fas fa-plus text-slate-500 group-hover:text-tech-blue"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-400 group-hover:text-white">Coming Soon</h3>
+                    <p class="text-sm text-slate-600 mt-2">论文与技术报告整理中...</p>
+                </div>
+
+                <!-- 占位卡片 2 -->
+                <div class="tech-card h-64 rounded-xl p-6 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-700 hover:border-tech-purple group cursor-pointer transition">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-tech-purple/20 transition">
+                        <i class="fas fa-file-code text-slate-500 group-hover:text-tech-purple"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-400 group-hover:text-white">Projects</h3>
+                    <p class="text-sm text-slate-600 mt-2">开源项目即将上线</p>
+                </div>
+
+                 <!-- 占位卡片 3 -->
+                 <div class="tech-card h-64 rounded-xl p-6 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-700 hover:border-white group cursor-pointer transition">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-white/20 transition">
+                        <i class="fas fa-flask text-slate-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-400 group-hover:text-white">Tech Blog</h3>
+                    <p class="text-sm text-slate-600 mt-2">技术博客撰写中</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="border-t border-white/10 bg-[#020617] py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h4 class="font-bold text-xl text-white tracking-wider">Rayneo<span class="text-tech-blue">AI</span></h4>
+                <p class="text-xs text-slate-500 mt-2">© 2025 Rayneo Research. Build with <i class="fas fa-heart text-red-500"></i> & Code.</p>
+            </div>
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- Research Item 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-10 group-hover:opacity-20 transition"></div>
-                        <i class="fas fa-eye text-6xl text-slate-300"></i>
-                        <!-- 这里应该放论文/项目配图 -->
-                        <div class="absolute bottom-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">CVPR 2025</div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition">Rayneo-Multimodal: 眼镜端侧多模态大模型</h3>
-                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
-                            针对低功耗穿戴设备优化的轻量级多模态模型，实现了实时的第一视角场景理解与问答，延迟低于500ms。
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="text-sm font-semibold text-blue-600 hover:underline"><i class="far fa-file-pdf mr-1"></i> Paper</a>
-                            <a href="#" class="text-sm font-semibold text-slate-600 hover:text-black hover:underline"><i class="fab fa-github mr-1"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Research Item 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 group">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-400 opacity-10 group-hover:opacity-20 transition"></div>
-                        <i class="fas fa-project-diagram text-6xl text-slate-300"></i>
-                         <!-- 这里应该放论文/项目配图 -->
-                         <div class="absolute bottom-4 right-4 bg-green-600/90 text-white text-xs px-2 py-1 rounded">Open Source</div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-600 transition">SLAM-LLM Agent: 空间记忆智能体</h3>
-                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
-                            结合SLAM技术与LLM推理能力，让智能眼镜具备“空间记忆”，能够回答“我的钥匙放在哪里了？”等情境问题。
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="text-sm font-semibold text-blue-600 hover:underline"><i class="fas fa-laptop-code mr-1"></i> Demo</a>
-                            <a href="#" class="text-sm font-semibold text-slate-600 hover:text-black hover:underline"><i class="fab fa-github mr-1"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 招聘信息 (Careers) -->
-    <section id="careers" class="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <!-- 装饰背景代码 -->
-        <div class="absolute top-0 right-0 p-10 opacity-10 font-mono text-sm hidden md:block select-none">
-            def create_future():<br>
-            &nbsp;&nbsp;vision = load_model("rayneo_v2")<br>
-            &nbsp;&nbsp;world = ar_glass.capture()<br>
-            &nbsp;&nbsp;return vision(world)
-        </div>
-
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold mb-6">加入我们，编写未来的“视界”</h2>
-            <p class="text-slate-400 mb-10 max-w-2xl mx-auto">
-                我们需要对 AI、计算机视觉和 AR 充满热情的你。我们提供极具竞争力的薪酬和海量的 GPU 算力支持。
-            </p>
-
-            <div class="grid gap-4 text-left">
-                <!-- Job 1 -->
-                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
-                    <div>
-                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">大模型算法研究员 (LLM/Multimodal)</h4>
-                        <p class="text-sm text-slate-400 mt-1">北京/深圳 · 全职</p>
-                    </div>
-                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
-                </div>
-                <!-- Job 2 -->
-                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
-                    <div>
-                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">3D视觉/SLAM 算法工程师</h4>
-                        <p class="text-sm text-slate-400 mt-1">深圳 · 全职</p>
-                    </div>
-                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
-                </div>
-                 <!-- Job 3 -->
-                 <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/10 transition cursor-pointer flex justify-between items-center group">
-                    <div>
-                        <h4 class="font-bold text-lg text-blue-400 group-hover:text-blue-300">端侧模型部署优化专家</h4>
-                        <p class="text-sm text-slate-400 mt-1">深圳 · 全职</p>
-                    </div>
-                    <i class="fas fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
-                </div>
-            </div>
-
-            <button class="mt-10 px-8 py-3 border border-blue-500 text-blue-400 rounded hover:bg-blue-500 hover:text-white transition">
-                查看所有职位
-            </button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-50 py-10 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="font-bold text-slate-700">Rayneo<span class="font-light">Research</span></span>
-                <p class="text-xs text-slate-400 mt-2">© 2024 Rayneo AI Lab. All rights reserved.</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">Github</a>
-                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">HuggingFace</a>
-                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">Twitter</a>
-                <a href="#" class="text-slate-500 hover:text-blue-600 text-sm">LinkedIn</a>
+            <div class="flex gap-6">
+                <a href="https://github.com/RayNeo-AI" class="text-slate-400 hover:text-white transition text-2xl">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
     </footer>
