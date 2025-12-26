@@ -13,7 +13,7 @@
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#0f172a',       /* 调整：基础背景色提亮为深蓝灰，不再是纯黑 */
+                            bg: '#0f172a',       /* 调整：基础背景色提亮为深蓝灰 */
                             card: '#1e293b',     /* 卡片颜色相应调整 */
                             blue: '#38bdf8',     /* 雷鸟蓝 */
                             cyan: '#22d3ee',     /* 新增青色光效 */
@@ -63,7 +63,7 @@
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
         }
 
-        /* 玻璃拟态卡片 - 更通透亮丽 */
+        /* 玻璃拟态卡片 */
         .glass-panel {
             background: rgba(30, 41, 59, 0.4); 
             backdrop-filter: blur(20px);       
@@ -89,21 +89,11 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .job-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
         .job-card:hover {
             background: rgba(30, 41, 59, 0.8);
             transform: translateY(-5px);
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-        }
-        .job-card:hover::before {
-            opacity: 1;
+            border-color: rgba(34, 211, 238, 0.4);
         }
 
         /* 炫彩边框特效 */
@@ -141,20 +131,17 @@
 </head>
 <body class="antialiased selection:bg-tech-purple selection:text-white">
 
-    <!-- 全局背景装饰 (颜色更丰富，背景稍浅) -->
+    <!-- 全局背景装饰 -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <!-- 1. 基础背景：深蓝灰渐变 -->
+        <!-- 1. 基础背景 -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a] via-[#1e1b4b] to-[#020617]"></div>
 
-        <!-- 2. 极光流体光斑 (色彩增强) -->
-        <!-- 左上：青色 (Cyan) -->
+        <!-- 2. 极光流体光斑 -->
         <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-tech-cyan/20 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob"></div>
-        <!-- 右上：紫色 (Purple) -->
         <div class="absolute top-[-10%] right-[-20%] w-[700px] h-[700px] bg-tech-purple/20 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob animation-delay-2000"></div>
-        <!-- 底部：粉色 (Pink) -->
         <div class="absolute bottom-[-20%] left-[20%] w-[900px] h-[900px] bg-tech-pink/15 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob animation-delay-4000"></div>
         
-        <!-- 3. 科技网格 (Grid) -->
+        <!-- 3. 科技网格 -->
         <div class="absolute inset-0 bg-grid-tech z-0 opacity-30"></div>
         
         <!-- 4. 漂浮元素 -->
@@ -166,23 +153,23 @@
         </div>
     </div>
 
-    <!-- 1. 导航栏 -->
+    <!-- 1. 导航栏 (修改：Logo图片 + 新增加入我们链接) -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/80 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo (替换为图片) -->
+                <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
-                    <!-- 请确保 image/logo.png 存在 -->
-                    <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.8)] transition duration-300">
+                    <!-- 修改点 1：使用 image/logo.jpg -->
+                    <img src="image/logo.jpg" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.8)] transition duration-300 rounded-md">
                     <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-tech-cyan group-hover:text-tech-purple transition duration-500">Research</span></span>
                 </div>
                 
-                <!-- 链接 (新增加入我们) -->
+                <!-- 链接 -->
                 <div class="hidden md:flex space-x-10">
                     <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">首页</a>
                     <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">团队介绍</a>
                     <a href="#research" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">研究成果</a>
-                    <!-- 新增导航项 -->
+                    <!-- 修改点 2：新增 加入我们 链接 -->
                     <a href="#careers" class="text-sm font-bold text-tech-cyan hover:text-tech-purple transition duration-300 flex items-center gap-1">
                         <i class="fas fa-fire animate-pulse text-xs"></i> 加入我们
                     </a>
@@ -235,7 +222,7 @@
         </div>
     </section>
 
-    <!-- 3. Leader Profile Section (保持不变) -->
+    <!-- 3. Leader Profile Section (修改：Leader照片) -->
     <section id="team" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
             
@@ -245,7 +232,6 @@
                 <i class="fas fa-id-card text-4xl text-tech-purple animate-float"></i>
             </div>
 
-            <!-- Bento Grid Layout for Leader -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-24">
                 
                 <!-- 1. Profile Card -->
@@ -257,7 +243,8 @@
                             <div class="relative w-40 h-40 mt-4 mb-6 group">
                                 <div class="absolute -inset-2 bg-gradient-to-r from-tech-cyan to-tech-pink rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-spin-slow"></div>
                                 <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 bg-black">
-                                    <img src="https://ui-avatars.com/api/?name=Ada+Cheng&background=000&color=fff&size=256" alt="Ada Cheng" class="w-full h-full object-cover">
+                                    <!-- 修改点 3：使用 image/SijieCheng.jpg -->
+                                    <img src="image/SijieCheng.jpg" alt="Ada Cheng" class="w-full h-full object-cover">
                                 </div>
                                 <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-slate-900 animate-pulse"></div>
                             </div>
@@ -298,7 +285,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Main Content -->
+                <!-- 2. Main Content (保持不变) -->
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- About & Research -->
                     <div class="md:col-span-2 glass-panel rounded-2xl p-8 relative overflow-hidden">
@@ -480,7 +467,7 @@
                 </div>
             </div>
 
-            <!-- 照片墙 -->
+            <!-- 照片墙 (保持不变) -->
             <div class="space-y-6">
                 <h3 class="text-xl font-bold text-slate-400 uppercase tracking-widest mb-4">Team Gallery</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-64">
@@ -547,7 +534,7 @@
         </div>
     </section>
 
-    <!-- 6. Join Us (新增：招聘板块) -->
+    <!-- 6. Join Us (修改点 4：新增招聘板块) -->
     <section id="careers" class="py-24 relative z-10">
         <!-- 装饰背景 -->
         <div class="absolute inset-0 bg-gradient-to-t from-tech-blue/5 to-transparent pointer-events-none"></div>
