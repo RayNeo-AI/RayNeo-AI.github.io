@@ -28,7 +28,9 @@
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 6s ease-in-out 3s infinite',
                         'blob': 'blob 10s infinite',
-                        'spin-slow': 'spin 12s linear infinite',
+                        'spin-slow': 'spin 15s linear infinite', /* 用于光束旋转 */
+                        'spin-reverse': 'spin 20s linear infinite reverse', /* 反向旋转 */
+                        'text-shimmer': 'text-shimmer 3s ease-out infinite alternate',
                     },
                     keyframes: {
                         float: {
@@ -40,6 +42,10 @@
                             '33%': { transform: 'translate(30px, -50px) scale(1.2)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'text-shimmer': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' },
                         }
                     }
                 }
@@ -56,11 +62,11 @@
         
         /* 增强型动态网格 */
         .bg-grid-tech {
-            background-size: 60px 60px;
+            background-size: 50px 50px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
         }
 
         /* 玻璃拟态卡片 */
@@ -78,7 +84,7 @@
         .glass-panel:hover {
             background: rgba(30, 41, 59, 0.6);
             border-color: rgba(34, 211, 238, 0.5);
-            box-shadow: 0 10px 40px -10px rgba(34, 211, 238, 0.3);
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
             transform: translateY(-8px) scale(1.01);
             z-index: 10;
         }
@@ -88,7 +94,7 @@
             content: "";
             position: absolute;
             top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
             transform: skewX(-25deg);
             transition: 0.5s;
             pointer-events: none;
@@ -96,7 +102,7 @@
         .shine-effect:hover::before { animation: shine 0.75s; }
         @keyframes shine { 100% { left: 150%; } }
 
-        /* 招聘卡片专属：动态流光边框 */
+        /* 招聘卡片专属 */
         .job-card {
             position: relative;
             background: rgba(30, 41, 59, 0.5);
@@ -105,7 +111,7 @@
             transition: all 0.3s ease;
             border: 1px solid transparent; 
             background-clip: padding-box;
-            height: 600px; /* 固定高度以便内部滚动 */
+            height: 600px;
             display: flex;
             flex-direction: column;
         }
@@ -116,7 +122,7 @@
             inset: 0;
             border-radius: 1rem;
             padding: 1px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -126,7 +132,7 @@
         .job-card:hover {
             background: rgba(30, 41, 59, 0.85);
             transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.2); /* 增强发光 */
         }
 
         .job-card::before {
@@ -147,9 +153,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: text-shimmer 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.5)); /* 增加文字霓虹光晕 */
         }
 
-        /* 炫彩边框特效 */
+        /* 炫彩边框 */
         .holo-border {
             position: relative;
             background: #0f172a;
@@ -167,7 +174,7 @@
         }
         @keyframes border-anim { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
 
-        /* 自定义滚动条 */
+        /* 滚动条 */
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .custom-scroll::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 2px; }
@@ -176,35 +183,56 @@
 </head>
 <body class="antialiased selection:bg-tech-purple selection:text-white">
 
-    <!-- 全局背景装饰 -->
+    <!-- 全局背景装饰 (Lighting FX Upgrade) -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#1e1b4b] via-[#172554] to-[#0f172a]"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[900px] h-[900px] bg-tech-cyan/30 rounded-full mix-blend-screen filter blur-[120px] opacity-60 animate-blob"></div>
-        <div class="absolute top-0 right-[-20%] w-[800px] h-[800px] bg-tech-purple/30 rounded-full mix-blend-screen filter blur-[120px] opacity-60 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[1000px] h-[1000px] bg-tech-pink/25 rounded-full mix-blend-screen filter blur-[120px] opacity-60 animate-blob animation-delay-4000"></div>
-        <div class="absolute inset-0 bg-grid-tech z-0 opacity-30"></div>
-        <div class="absolute top-32 right-10 opacity-30 animate-float text-9xl rotate-12 text-white blur-[1px]"><i class="fas fa-glasses"></i></div>
-        <div class="absolute bottom-40 left-10 opacity-30 animate-float-delayed text-8xl -rotate-12 text-tech-cyan blur-[1px]"><i class="fas fa-cube"></i></div>
+        <!-- 1. 基础深空背景 -->
+        <div class="absolute inset-0 bg-[#0f172a]"></div>
+
+        <!-- 2. 顶部体积光 (Volumetric Spotlight) - 模拟顶部打下来的强光 -->
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120%] h-[800px] bg-gradient-radial from-tech-blue/20 via-transparent to-transparent opacity-70 blur-3xl"></div>
+
+        <!-- 3. 旋转光束 (Rotating Light Beams) - 增加动态感 -->
+        <div class="absolute top-[-50%] left-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-cyan/20 via-transparent to-transparent opacity-40 animate-spin-slow blur-[80px]"></div>
+        <div class="absolute bottom-[-50%] right-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-purple/20 via-transparent to-transparent opacity-40 animate-spin-reverse blur-[80px]"></div>
+
+        <!-- 4. 高亮极光流体 (High Intensity Aurora) - 使用 color-dodge 混合模式增加亮度 -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-tech-blue/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob"></div>
+            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-tech-purple/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-tech-pink/20 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <!-- 5. 科技网格 (Grid) -->
+        <div class="absolute inset-0 bg-grid-tech z-0 opacity-40"></div>
+        
+        <!-- 6. 漂浮几何体 (发光增强) -->
+        <div class="absolute top-32 right-10 opacity-40 animate-float text-9xl rotate-12 text-white blur-[2px] drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"><i class="fas fa-glasses"></i></div>
+        <div class="absolute bottom-40 left-10 opacity-40 animate-float-delayed text-8xl -rotate-12 text-tech-cyan blur-[2px] drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"><i class="fas fa-cube"></i></div>
     </div>
 
     <!-- 1. 导航栏 -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/70 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
-                    <img src="image/logo.jpg" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,1)] transition duration-300 rounded-md">
-                    <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-tech-cyan group-hover:text-tech-purple transition duration-500">Research</span></span>
+                    <img src="image/logo.jpg" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] group-hover:drop-shadow-[0_0_20px_rgba(34,211,238,1)] transition duration-300 rounded-md">
+                    <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-tech-cyan group-hover:text-tech-purple transition duration-500 text-shadow-neon">Research</span></span>
                 </div>
+                
+                <!-- 链接 -->
                 <div class="hidden md:flex space-x-10">
-                    <a href="#home" class="text-sm font-medium text-slate-200 hover:text-white hover:text-shadow transition duration-300">首页</a>
-                    <a href="#team" class="text-sm font-medium text-slate-200 hover:text-white hover:text-shadow transition duration-300">团队介绍</a>
-                    <a href="#research" class="text-sm font-medium text-slate-200 hover:text-white hover:text-shadow transition duration-300">研究成果</a>
+                    <a href="#home" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">首页</a>
+                    <a href="#team" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">团队介绍</a>
+                    <a href="#research" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">研究成果</a>
                     <a href="#careers" class="text-sm font-bold text-tech-cyan hover:text-tech-purple transition duration-300 flex items-center gap-1">
                         <i class="fas fa-fire animate-pulse text-xs"></i> 加入我们
                     </a>
                 </div>
+
+                <!-- Github Only -->
                 <div>
-                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition group hover:border-tech-cyan/80 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition group hover:border-tech-cyan/80 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
                         <i class="fab fa-github text-xl text-white group-hover:text-tech-cyan transition duration-300"></i>
                         <span class="text-sm font-medium text-slate-200 group-hover:text-white hidden sm:inline">GitHub</span>
                     </a>
@@ -216,27 +244,31 @@
     <!-- 2. Hero Section -->
     <section id="home" class="relative pt-40 pb-20 z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-tech-cyan/50 bg-tech-cyan/10 text-tech-cyan text-xs font-mono mb-8 animate-pulse-slow shadow-[0_0_25px_rgba(34,211,238,0.3)]">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-tech-cyan/50 bg-tech-cyan/10 text-tech-cyan text-xs font-mono mb-8 animate-pulse-slow shadow-[0_0_30px_rgba(34,211,238,0.4)]">
                 <span class="w-2 h-2 bg-tech-cyan rounded-full mr-2 animate-ping"></span>
                 雷鸟大模型算法部
             </div>
+            
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-white drop-shadow-2xl">
                 构建未来的 <span class="text-fluid-gradient relative">空间智能体</span>
             </h1>
+            
             <p class="mt-4 text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light">
                 我们是雷鸟大模型算法部门。<br>
-                负责面向智能眼镜的<span class="text-white font-semibold drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">端云协同AI平台搭建</span>，以及一系列<span class="text-white font-semibold drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">智能体 (Agents)</span> 构建。<br>
+                负责面向智能眼镜的<span class="text-white font-semibold drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">端云协同AI平台搭建</span>，以及一系列<span class="text-white font-semibold drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">智能体 (Agents)</span> 构建。<br>
                 从语音交互到多模态理解，赋予眼镜真正的认知能力。
             </p>
+
             <div class="mt-12 flex justify-center gap-6">
-                <a href="#careers" class="px-8 py-4 bg-gradient-to-r from-tech-blue to-tech-cyan text-slate-900 font-bold rounded-lg hover:scale-105 hover:shadow-[0_0_35px_rgba(34,211,238,0.6)] transition duration-300 relative overflow-hidden group">
+                <a href="#careers" class="px-8 py-4 bg-gradient-to-r from-tech-blue to-tech-cyan text-slate-900 font-bold rounded-lg hover:scale-105 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition duration-300 relative overflow-hidden group">
                     <span class="relative z-10">加入我们</span>
-                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition duration-300"></div>
+                    <div class="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition duration-300"></div>
                 </a>
-                <a href="#team" class="px-8 py-4 bg-transparent border border-white/20 text-white rounded-lg hover:border-tech-purple hover:text-tech-purple hover:bg-tech-purple/10 hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] transition duration-300">
+                <a href="#team" class="px-8 py-4 bg-transparent border border-white/20 text-white rounded-lg hover:border-tech-purple hover:text-tech-purple hover:bg-tech-purple/10 hover:shadow-[0_0_20px_rgba(192,132,252,0.5)] transition duration-300">
                     认识团队
                 </a>
             </div>
+
             <div class="mt-20 flex flex-wrap justify-center gap-4 text-sm font-mono text-slate-300">
                 <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-cyan hover:text-tech-cyan hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition cursor-default"># 端侧ASR+NLU</span>
                 <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-purple hover:text-tech-purple hover:shadow-[0_0_15px_rgba(192,132,252,0.4)] transition cursor-default"># 意图识别</span>
@@ -249,18 +281,22 @@
     <!-- 3. Leader Profile Section -->
     <section id="team" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
+            
             <div class="flex items-end mb-12 gap-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">团队负责人</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">团队负责人</h2>
                 <div class="h-1 flex-1 bg-gradient-to-r from-tech-cyan via-tech-purple to-transparent rounded-full mb-3 opacity-80 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
-                <i class="fas fa-id-card text-4xl text-tech-purple animate-float drop-shadow-[0_0_15px_rgba(192,132,252,0.8)]"></i>
+                <i class="fas fa-id-card text-4xl text-tech-purple animate-float drop-shadow-[0_0_20px_rgba(192,132,252,0.8)]"></i>
             </div>
 
+            <!-- Bento Grid Layout for Leader -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-24">
-                <!-- Leader Profile Card -->
+                
+                <!-- 1. Profile Card -->
                 <div class="lg:col-span-4 flex flex-col gap-6">
                     <div class="holo-border rounded-2xl p-[1px]">
                         <div class="bg-tech-card rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden bg-opacity-90 backdrop-blur-xl">
                             <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-tech-cyan/20 to-transparent"></div>
+                            
                             <div class="relative w-40 h-40 mt-4 mb-6 group">
                                 <div class="absolute -inset-2 bg-gradient-to-r from-tech-cyan to-tech-pink rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500 animate-spin-slow"></div>
                                 <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/30 bg-black">
@@ -268,20 +304,23 @@
                                 </div>
                                 <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-slate-900 animate-pulse"></div>
                             </div>
+
                             <h3 class="text-3xl font-bold text-white mb-1">程思婕 (Ada)</h3>
                             <p class="text-tech-cyan font-mono text-sm mb-4">清华大学 博士候选人</p>
-                            <div class="w-full bg-tech-cyan/10 border border-tech-cyan/30 rounded-lg p-3 mb-6 text-left hover:bg-tech-cyan/20 transition duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+                            
+                            <div class="w-full bg-tech-cyan/10 border border-tech-cyan/30 rounded-lg p-3 mb-6 text-left hover:bg-tech-cyan/20 transition duration-300 shadow-[0_0_20px_rgba(34,211,238,0.15)]">
                                 <div class="flex items-center gap-2 mb-1">
                                     <span class="relative flex h-3 w-3">
                                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-pink opacity-75"></span>
-                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-tech-pink shadow-[0_0_10px_#ff0055]"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-tech-pink shadow-[0_0_15px_#ff0055]"></span>
                                     </span>
-                                    <span class="text-xs font-bold text-tech-pink uppercase tracking-wide drop-shadow-[0_0_5px_rgba(255,0,85,0.8)]">招聘中</span>
+                                    <span class="text-xs font-bold text-tech-pink uppercase tracking-wide drop-shadow-[0_0_8px_rgba(255,0,85,0.8)]">招聘中</span>
                                 </div>
                                 <p class="text-xs text-slate-300 leading-snug">
                                     寻找对智能眼镜AI技术充满热情的全职员工及实习生。欢迎科研合作。
                                 </p>
                             </div>
+
                             <div class="flex flex-wrap justify-center gap-3 w-full">
                                 <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-800 hover:bg-slate-700 hover:text-tech-cyan hover:border-tech-cyan border border-slate-700 text-white text-sm transition flex items-center justify-center gap-2">
                                     <i class="fab fa-github"></i> GitHub
@@ -305,8 +344,8 @@
                 <!-- Leader Details -->
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="md:col-span-2 glass-panel rounded-2xl p-8 relative overflow-hidden shine-effect">
-                         <div class="absolute top-0 right-0 p-6 opacity-10">
-                            <i class="fas fa-brain text-8xl text-white"></i>
+                         <div class="absolute top-0 right-0 p-6 opacity-20">
+                            <i class="fas fa-brain text-9xl text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"></i>
                         </div>
                         <h4 class="text-xl font-bold text-white mb-4 flex items-center">
                             <i class="fas fa-lightbulb text-tech-yellow mr-2 shadow-yellow-500"></i> 研究重心
