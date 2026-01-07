@@ -13,14 +13,14 @@
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#0f172a',       /* 基础背景色 */
-                            card: '#1e293b',     /* 卡片基础色 */
+                            bg: '#1e293b',       /* 修改：背景色提亮为 Slate-800 */
+                            card: '#334155',     /* 修改：卡片基础色相应提亮 */
                             blue: '#38bdf8',     /* 雷鸟蓝 */
                             cyan: '#22d3ee',     /* 青色光效 */
                             purple: '#d8b4fe',   /* 提亮紫色 */
                             pink: '#f472b6',     /* 粉色 */
                             yellow: '#facc15',
-                            text: '#e2e8f0'      /* 文字颜色 */
+                            text: '#f1f5f9'      /* 文字颜色保持高亮 */
                         }
                     },
                     animation: {
@@ -54,7 +54,7 @@
     </script>
     <style>
         body { 
-            background-color: #0f172a; 
+            background-color: #1e293b; /* 修改：整体背景提亮 */
             color: #f1f5f9; 
             font-family: 'Inter', system-ui, sans-serif; 
             overflow-x: hidden; 
@@ -70,22 +70,21 @@
         }
 
         /* -----------------------------------------------------------
-           光影特效核心升级
+           光影特效 (微调适配亮色背景)
         ----------------------------------------------------------- */
 
-        /* 1. 玻璃拟态卡片：增加立体光照和边缘高光 */
+        /* 1. 玻璃拟态卡片 */
         .glass-panel {
-            /* 使用线性渐变模拟光源从左上角打下来 */
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+            /* 背景透明度微调，适应稍亮的背景 */
+            background: linear-gradient(145deg, rgba(51, 65, 85, 0.6), rgba(30, 41, 59, 0.4));
             backdrop-filter: blur(24px);       
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             
-            /* 多重阴影：内发光 + 底部投影 + 环境辉光 */
             box-shadow: 
-                inset 0 1px 1px rgba(255, 255, 255, 0.15), /* 顶部边缘高光 */
-                0 10px 30px -5px rgba(0, 0, 0, 0.5),       /* 深度投影 */
-                0 0 15px rgba(56, 189, 248, 0.05);         /* 微弱蓝光 */
+                inset 0 1px 1px rgba(255, 255, 255, 0.15),
+                0 10px 30px -5px rgba(0, 0, 0, 0.3), /* 阴影减淡 */
+                0 0 15px rgba(56, 189, 248, 0.05);
             
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -93,24 +92,21 @@
         }
         
         .glass-panel:hover {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+            background: linear-gradient(145deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.6));
             border-color: rgba(34, 211, 238, 0.5);
-            
-            /* 悬停时光影增强：更强的内发光 + 霓虹外发光 */
             box-shadow: 
                 inset 0 1px 1px rgba(255, 255, 255, 0.3),
-                0 20px 50px -10px rgba(0, 0, 0, 0.6),
-                0 0 30px rgba(34, 211, 238, 0.25); /* 青色光晕爆发 */
-                
+                0 20px 50px -10px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(34, 211, 238, 0.25);
             transform: translateY(-8px) scale(1.01);
             z-index: 10;
         }
 
-        /* 2. 招聘卡片：增加深邃感和流光 */
+        /* 2. 招聘卡片 */
         .job-card {
             position: relative;
-            /* 深色渐变背景 */
-            background: linear-gradient(160deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+            /* 背景色相应提亮 */
+            background: linear-gradient(160deg, rgba(51, 65, 85, 0.7), rgba(30, 41, 59, 0.8));
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -120,13 +116,11 @@
             display: flex;
             flex-direction: column;
             
-            /* 初始阴影 */
             box-shadow: 
                 inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 10px 30px rgba(0,0,0,0.5);
+                0 10px 30px rgba(0,0,0,0.3);
         }
         
-        /* 细微的边框光泽 */
         .job-card::after {
             content: '';
             position: absolute;
@@ -141,16 +135,14 @@
         }
 
         .job-card:hover {
-            background: linear-gradient(160deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+            background: linear-gradient(160deg, rgba(51, 65, 85, 0.9), rgba(30, 41, 59, 0.95));
             transform: translateY(-5px);
-            /* 悬停时强烈的环境光 */
             box-shadow: 
                 inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 20px 50px rgba(0,0,0,0.6),
+                0 20px 50px rgba(0,0,0,0.4),
                 0 0 40px rgba(34, 211, 238, 0.2); 
         }
 
-        /* 底部动态光条 */
         .job-card::before {
             content: '';
             position: absolute;
@@ -159,7 +151,7 @@
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
-            box-shadow: 0 0 10px rgba(34, 211, 238, 0.8); /* 光条自带发光 */
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
         }
         .job-card:hover::before { transform: scaleX(1); }
 
@@ -189,9 +181,9 @@
         /* 炫彩边框 */
         .holo-border {
             position: relative;
-            background: #0f172a;
+            background: #1e293b; /* 修改：适配背景 */
             z-index: 1;
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); /* 头像框增加辉光 */
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
         }
         .holo-border::before {
             content: "";
@@ -214,22 +206,23 @@
 </head>
 <body class="antialiased selection:bg-tech-purple selection:text-white">
 
-    <!-- 全局背景装饰 -->
+    <!-- 全局背景装饰 (修改：背景大幅提亮) -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <!-- 1. 基础深空背景 -->
-        <div class="absolute inset-0 bg-[#0f172a]"></div>
+        <!-- 1. 基础背景：从深黑改为深蓝灰渐变 -->
+        <div class="absolute inset-0 bg-[#1e293b]"></div>
 
-        <!-- 2. 顶部体积光 (Volumetric Spotlight) -->
-        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120%] h-[800px] bg-gradient-radial from-tech-blue/20 via-transparent to-transparent opacity-70 blur-3xl"></div>
+        <!-- 2. 顶部体积光 -->
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120%] h-[800px] bg-gradient-radial from-tech-blue/20 via-transparent to-transparent opacity-60 blur-3xl"></div>
 
-        <!-- 3. 旋转光束 (Rotating Light Beams) -->
+        <!-- 3. 旋转光束 (调整颜色以适应亮背景) -->
         <div class="absolute top-[-50%] left-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-cyan/20 via-transparent to-transparent opacity-40 animate-spin-slow blur-[80px]"></div>
         <div class="absolute bottom-[-50%] right-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-purple/20 via-transparent to-transparent opacity-40 animate-spin-reverse blur-[80px]"></div>
 
-        <!-- 4. 高亮极光流体 (High Intensity Aurora) -->
+        <!-- 4. 高亮极光流体 (混合模式优化) -->
         <div class="absolute top-0 left-0 w-full h-full">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-tech-blue/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob"></div>
-            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-tech-purple/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-2000"></div>
+            <!-- 增加亮度：使用 color-dodge 混合 -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-tech-blue/25 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob"></div>
+            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-tech-purple/25 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-2000"></div>
             <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-tech-pink/20 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-4000"></div>
         </div>
         
@@ -241,14 +234,13 @@
         <div class="absolute bottom-40 left-10 opacity-40 animate-float-delayed text-8xl -rotate-12 text-tech-cyan blur-[2px] drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"><i class="fas fa-cube"></i></div>
     </div>
 
-    <!-- 1. 导航栏 (Logo 修改为 Rayneo AI) -->
-    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/70 backdrop-blur-xl transition-all duration-300">
+    <!-- 1. 导航栏 (背景色适配) -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#1e293b]/70 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
                     <img src="image/logo.jpg" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] group-hover:drop-shadow-[0_0_20px_rgba(34,211,238,1)] transition duration-300 rounded-md">
-                    <!-- 修改点：Research -> AI -->
                     <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-tech-cyan group-hover:text-tech-purple transition duration-500 text-shadow-neon">AI</span></span>
                 </div>
                 
@@ -338,7 +330,7 @@
                             </div>
 
                             <h3 class="text-3xl font-bold text-white mb-1">程思婕 (Ada)</h3>
-                            <p class="text-tech-cyan font-mono text-sm mb-4">清华大学 博士候选人</p>
+                            <p class="text-tech-cyan font-mono text-sm mb-4">清华大学 博士</p>
                             
                             <div class="w-full bg-tech-cyan/10 border border-tech-cyan/30 rounded-lg p-3 mb-6 text-left hover:bg-tech-cyan/20 transition duration-300 shadow-[0_0_20px_rgba(34,211,238,0.15)]">
                                 <div class="flex items-center gap-2 mb-1">
@@ -801,8 +793,8 @@
         </div>
     </section>
 
-    <!-- 7. Footer -->
-    <footer class="border-t border-white/10 bg-[#020617] py-12">
+    <!-- 7. Footer (背景色适配) -->
+    <footer class="border-t border-white/10 bg-[#1e293b] py-12">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
                 <h4 class="font-bold text-xl text-white tracking-wider">Rayneo<span class="text-tech-blue">AI</span></h4>
