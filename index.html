@@ -12,13 +12,13 @@
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#f8fafc',       /* 修改：背景改为极简灰白 (Slate-50) */
-                            card: '#ffffff',     /* 修改：卡片改为纯白 */
-                            blue: '#0ea5e9',     /* 调整：更稳重的科技蓝 (Sky-500) */
-                            cyan: '#06b6d4',     /* 调整：青色 (Cyan-500) */
-                            purple: '#8b5cf6',   /* 调整：紫色 (Violet-500) */
-                            pink: '#ec4899',     /* 调整：粉色 */
-                            text: '#1e293b'      /* 修改：主要文字为深蓝灰 (Slate-800) */
+                            bg: '#f8fafc',       /* 保持背景为极简灰白 */
+                            card: '#ffffff',     /* 保持卡片为纯白 */
+                            blue: '#0ea5e9',     
+                            cyan: '#06b6d4',     
+                            purple: '#8b5cf6',   
+                            pink: '#ec4899',     
+                            text: '#1e293b'      
                         }
                     },
                     animation: {
@@ -52,12 +52,12 @@
     <style>
         body { 
             background-color: #f8fafc; 
-            color: #1e293b; /* 深色文字 */
+            color: #1e293b; 
             font-family: 'Inter', system-ui, -apple-system, sans-serif; 
             overflow-x: hidden; 
         }
         
-        /* 网格背景 - 改为深色线条 */
+        /* 网格背景 */
         .bg-grid-tech {
             background-size: 60px 60px;
             background-image: 
@@ -66,18 +66,15 @@
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
 
-        /* 1. 玻璃拟态卡片：清爽白玻璃风格 */
+        /* 玻璃拟态卡片 */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7); /* 白色半透明 */
+            background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(20px);       
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            
-            /* 柔和的投影，不再是发光 */
             box-shadow: 
                 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
                 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
@@ -85,7 +82,7 @@
         
         .glass-panel:hover {
             background: rgba(255, 255, 255, 0.9);
-            border-color: #38bdf8; /* 悬停时边框变蓝 */
+            border-color: #38bdf8;
             box-shadow: 
                 0 20px 25px -5px rgba(0, 0, 0, 0.05), 
                 0 8px 10px -6px rgba(0, 0, 0, 0.01);
@@ -93,14 +90,14 @@
             z-index: 10;
         }
 
-        /* 2. 招聘卡片：纯白卡片风格 */
+        /* 招聘卡片 */
         .job-card {
             position: relative;
             background: #ffffff;
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0; /* 浅灰边框 */
+            border: 1px solid #e2e8f0;
             height: 600px;
             display: flex;
             flex-direction: column;
@@ -110,7 +107,7 @@
         .job-card:hover {
             border-color: #38bdf8;
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.15); /* 悬停时淡淡的蓝影 */
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.15);
         }
 
         /* 顶部装饰条 */
@@ -118,20 +115,20 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #8b5cf6); /* 蓝紫渐变 */
+            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
             opacity: 0.8;
         }
 
-        /* 文字流光 - 颜色加深 */
+        /* 文字流光 */
         .text-fluid-gradient {
-            background: linear-gradient(270deg, #0284c7, #7c3aed, #0284c7); /* 深蓝到深紫 */
+            background: linear-gradient(270deg, #0284c7, #7c3aed, #0284c7);
             background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: text-shimmer 5s linear infinite;
         }
 
-        /* Leader头像框 - 柔和渐变 */
+        /* Leader头像框 */
         .holo-border {
             position: relative;
             background: #fff;
@@ -143,20 +140,20 @@
             position: absolute;
             inset: -3px;
             z-index: -1;
-            background: linear-gradient(45deg, #38bdf8, #a78bfa, #f472b6); /* 柔和色调 */
+            background: linear-gradient(45deg, #38bdf8, #a78bfa, #f472b6);
             background-size: 400%;
             border-radius: inherit;
             animation: border-anim 6s linear infinite;
         }
         @keyframes border-anim { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
 
-        /* 滚动条美化 (浅色版) */
+        /* 滚动条 */
         .custom-scroll::-webkit-scrollbar { width: 6px; }
         .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        /* 扫光特效 (白色高光) */
+        /* 扫光特效 */
         .shine-effect::before {
             content: "";
             position: absolute;
@@ -174,18 +171,15 @@
 
     <!-- 全局背景装饰 (Clean Tech 风格) -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-slate-50">
-        <!-- 1. 柔和的极光色晕 (Pastel Gradients) -->
-        <!-- 左上：淡蓝色 -->
+        <!-- 柔和的极光色晕 -->
         <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-blue-200/40 rounded-full filter blur-[100px] opacity-60 animate-blob mix-blend-multiply"></div>
-        <!-- 右上：淡紫色 -->
         <div class="absolute top-[-10%] right-[-20%] w-[700px] h-[700px] bg-purple-200/40 rounded-full filter blur-[100px] opacity-60 animate-blob animation-delay-2000 mix-blend-multiply"></div>
-        <!-- 底部：淡粉色 -->
         <div class="absolute bottom-[-20%] left-[20%] w-[900px] h-[900px] bg-pink-100/50 rounded-full filter blur-[100px] opacity-60 animate-blob animation-delay-4000 mix-blend-multiply"></div>
         
-        <!-- 2. 科技网格 (浅色) -->
+        <!-- 科技网格 -->
         <div class="absolute inset-0 bg-grid-tech z-0 opacity-60"></div>
         
-        <!-- 3. 漂浮元素 (深色水印) -->
+        <!-- 漂浮元素 -->
         <div class="absolute top-32 right-10 opacity-5 animate-float text-9xl rotate-12 text-slate-400 blur-[1px]">
             <i class="fas fa-glasses"></i>
         </div>
@@ -194,30 +188,29 @@
         </div>
     </div>
 
-    <!-- 1. 导航栏 (白底磨砂) -->
-    <nav class="fixed w-full z-50 top-0 border-b border-slate-200 bg-white/80 backdrop-blur-xl transition-all duration-300">
+    <!-- 1. 导航栏 (修改：蓝黑色背景 + 白色文字) -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/90 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
-                    <!-- 修改点：png格式 -->
-                    <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain transition duration-300">
-                    <span class="font-bold text-xl tracking-wider text-slate-800">Rayneo<span class="font-light text-blue-600 transition duration-500">AI</span></span>
+                    <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain transition duration-300 filter brightness-200 contrast-200"> <!-- 增加亮度滤镜确保logo在深色背景可见 -->
+                    <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-blue-400 transition duration-500">AI</span></span>
                 </div>
                 
-                <!-- 链接 -->
+                <!-- 链接 (文字改为浅色) -->
                 <div class="hidden md:flex space-x-10">
-                    <a href="#home" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition duration-300">首页</a>
-                    <a href="#team" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition duration-300">团队介绍</a>
-                    <a href="#research" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition duration-300">研究成果</a>
-                    <a href="#careers" class="text-sm font-bold text-blue-600 hover:text-purple-600 transition duration-300 flex items-center gap-1">
+                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">首页</a>
+                    <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">团队介绍</a>
+                    <a href="#research" class="text-sm font-medium text-slate-300 hover:text-white transition duration-300">研究成果</a>
+                    <a href="#careers" class="text-sm font-bold text-blue-400 hover:text-white transition duration-300 flex items-center gap-1">
                         <i class="fas fa-fire animate-pulse text-xs"></i> 加入我们
                     </a>
                 </div>
 
-                <!-- Github Only (深色图标) -->
+                <!-- Github Only (深色背景适配) -->
                 <div>
-                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 transition group text-slate-700 hover:text-black">
+                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group text-white">
                         <i class="fab fa-github text-xl"></i>
                         <span class="text-sm font-medium hidden sm:inline">GitHub</span>
                     </a>
