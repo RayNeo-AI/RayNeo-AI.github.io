@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayneo AI Lab - 定义未来的虚实交互智能</title>
+    <title>Rayneo AI Lab - Defining Future Spatial Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -12,13 +12,13 @@
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#f0f9ff',       /* 极淡的冰蓝色背景 */
-                            card: '#ffffff',     /* 纯白卡片 */
-                            blue: '#0ea5e9',     /* 天蓝 */
-                            cyan: '#06b6d4',     /* 青色 */
-                            purple: '#8b5cf6',   /* 紫色 */
-                            pink: '#ec4899',     /* 粉色 */
-                            text: '#334155'      /* 主要文字颜色 */
+                            bg: '#f0f9ff',       /* Ice Blue Background */
+                            card: '#ffffff',     /* Pure White Card */
+                            blue: '#0ea5e9',     /* Sky Blue */
+                            cyan: '#06b6d4',     /* Cyan */
+                            purple: '#8b5cf6',   /* Violet */
+                            pink: '#ec4899',     /* Pink */
+                            text: '#334155'      /* Slate Text */
                         }
                     },
                     animation: {
@@ -57,7 +57,7 @@
             overflow-x: hidden; 
         }
         
-        /* 科技网格 */
+        /* Tech Grid Background */
         .bg-grid-tech {
             background-size: 50px 50px;
             background-image: 
@@ -66,7 +66,7 @@
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
 
-        /* 玻璃卡片 */
+        /* Glass Panel */
         .glass-panel {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(20px);       
@@ -90,7 +90,7 @@
             z-index: 10;
         }
 
-        /* 招聘大卡片容器 */
+        /* Job Card Container */
         .job-card {
             position: relative;
             background: #ffffff;
@@ -110,7 +110,7 @@
             box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.3);
         }
 
-        /* 招聘卡片顶部流光 */
+        /* Job Card Top Shine */
         .job-card::before {
             content: '';
             position: absolute;
@@ -120,32 +120,32 @@
             animation: text-shimmer 3s linear infinite;
         }
 
-        /* ------- 新增：子职位卡片样式 (Inner Job Items) ------- */
+        /* Inner Job Items */
         .job-item {
-            background: #f8fafc; /* Slate-50 */
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 0.75rem;
             padding: 1.25rem;
             transition: all 0.2s ease-in-out;
         }
 
-        /* 左侧蓝色系悬停 */
+        /* Blue hover */
         .job-item-blue:hover {
-            background: #f0f9ff; /* Sky-50 */
+            background: #f0f9ff;
             border-color: #38bdf8;
             box-shadow: 0 4px 12px -2px rgba(14, 165, 233, 0.15);
             transform: translateX(4px);
         }
 
-        /* 右侧紫色系悬停 */
+        /* Purple hover */
         .job-item-purple:hover {
-            background: #f5f3ff; /* Violet-50 */
+            background: #f5f3ff;
             border-color: #a78bfa;
             box-shadow: 0 4px 12px -2px rgba(139, 92, 246, 0.15);
             transform: translateX(4px);
         }
 
-        /* 文字流光 */
+        /* Text Fluid Gradient */
         .text-fluid-gradient {
             background: linear-gradient(270deg, #0284c7, #7c3aed, #0ea5e9, #0284c7);
             background-size: 300% auto;
@@ -155,7 +155,7 @@
             filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.2));
         }
 
-        /* Leader头像框 */
+        /* Leader Avatar Border */
         .holo-border {
             position: relative;
             background: #fff;
@@ -174,13 +174,13 @@
         }
         @keyframes border-anim { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
 
-        /* 滚动条 */
+        /* Scrollbar */
         .custom-scroll::-webkit-scrollbar { width: 6px; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        /* 扫光特效 */
+        /* Shine Effect */
         .shine-effect::before {
             content: "";
             position: absolute;
@@ -195,7 +195,7 @@
 </head>
 <body class="antialiased selection:bg-cyan-100 selection:text-cyan-900">
 
-    <!-- 全局背景装饰 -->
+    <!-- Global Background -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#f0f9ff]">
         <div class="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-100/50 via-cyan-50/30 to-transparent"></div>
         <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-blue-300/30 rounded-full filter blur-[100px] opacity-70 animate-blob mix-blend-multiply"></div>
@@ -206,24 +206,35 @@
         <div class="absolute bottom-40 left-10 opacity-10 animate-float-delayed text-8xl -rotate-12 text-blue-400 blur-[1px]"><i class="fas fa-cube"></i></div>
     </div>
 
-    <!-- 1. 导航栏 -->
+    <!-- 1. Navbar -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/90 backdrop-blur-xl transition-all duration-300 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
                     <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain transition duration-300 filter brightness-200 contrast-150">
                     <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-cyan-400 transition duration-500">AI</span></span>
                 </div>
+                
+                <!-- Center Links (English) -->
                 <div class="hidden md:flex space-x-10">
-                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">首页</a>
-                    <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">团队介绍</a>
-                    <a href="#research" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">研究成果</a>
+                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Home</a>
+                    <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Team</a>
+                    <a href="#research" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Research</a>
                     <a href="#careers" class="text-sm font-bold text-cyan-400 hover:text-purple-400 transition duration-300 flex items-center gap-1">
-                        <i class="fas fa-fire animate-pulse text-xs"></i> 加入我们
+                        <i class="fas fa-fire animate-pulse text-xs"></i> Careers
                     </a>
                 </div>
-                <div>
-                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group text-white shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+
+                <!-- Right Side: Language & Github -->
+                <div class="flex items-center gap-4">
+                    <!-- LANGUAGE TOGGLE BUTTON (Link to Chinese) -->
+                    <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition text-white hover:text-cyan-400 text-xs font-bold" title="Switch to Chinese">
+                        中
+                    </a>
+
+                    <!-- Github -->
+                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group text-white shadow-[0_0_10px_rgba(34,211,238,0.2)]">
                         <i class="fab fa-github text-xl"></i>
                         <span class="text-sm font-medium hidden sm:inline">GitHub</span>
                     </a>
@@ -235,35 +246,35 @@
     <!-- 2. Hero Section -->
     <section id="home" class="relative pt-40 pb-20 z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-200 bg-white/50 text-blue-600 text-xs font-mono mb-8 animate-pulse-slow shadow-sm backdrop-blur-sm">
-                <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
-                雷鸟大模型算法部
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-tech-cyan/30 bg-tech-cyan/10 text-tech-cyan text-xs font-mono mb-8 animate-pulse-slow shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                <span class="w-2 h-2 bg-tech-cyan rounded-full mr-2 animate-ping"></span>
+                RAYNEO LARGE MODEL ALGORITHM DEPT
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-slate-900 drop-shadow-sm">
-                构建未来的 <span class="text-fluid-gradient relative">空间智能体</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-slate-900 drop-shadow-2xl">
+                Building Future <span class="text-fluid-gradient relative">Spatial Agents</span>
             </h1>
             
             <p class="mt-4 text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-                我们是雷鸟大模型算法部门。<br>
-                负责面向智能眼镜的<span class="text-slate-900 font-semibold border-b-2 border-cyan-200">端云协同AI平台搭建</span>，以及一系列<span class="text-slate-900 font-semibold border-b-2 border-purple-200">智能体 (Agents)</span> 构建。<br>
-                从语音交互到多模态理解，赋予眼镜真正的认知能力。
+                We are the Rayneo Large Model Algorithm Department.<br>
+                Responsible for building <span class="text-slate-900 font-semibold border-b-2 border-cyan-200">Cloud-Edge Synergy AI Platforms</span> for smart glasses, and constructing a series of <span class="text-slate-900 font-semibold border-b-2 border-purple-200">Intelligent Agents</span>.<br>
+                Empowering glasses with true cognitive abilities through voice interaction and multimodal understanding.
             </p>
 
             <div class="mt-12 flex justify-center gap-6">
                 <a href="#careers" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.6)] transition duration-300 transform hover:-translate-y-1">
-                    加入我们
+                    Join Us
                 </a>
-                <a href="#team" class="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-lg hover:border-blue-400 hover:text-blue-600 transition duration-300 shadow-sm hover:shadow-md">
-                    认识团队
+                <a href="#team" class="px-8 py-4 bg-transparent border border-blue-200 text-slate-700 rounded-lg hover:border-purple-400 hover:text-purple-600 transition duration-300">
+                    Meet the Team
                 </a>
             </div>
 
             <div class="mt-20 flex flex-wrap justify-center gap-4 text-sm font-mono text-slate-500">
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-blue-400 hover:text-blue-600 hover:bg-white transition cursor-default shadow-sm"># 端侧ASR+NLU</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-purple-400 hover:text-purple-600 hover:bg-white transition cursor-default shadow-sm"># 意图识别</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-pink-400 hover:text-pink-600 hover:bg-white transition cursor-default shadow-sm"># 主动记忆</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-yellow-400 hover:text-yellow-600 hover:bg-white transition cursor-default shadow-sm"># 空间智能</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-cyan hover:text-tech-cyan hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition cursor-default"># On-Device ASR+NLU</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-purple hover:text-tech-purple hover:shadow-[0_0_15px_rgba(192,132,252,0.3)] transition cursor-default"># Intent Recognition</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-pink hover:text-tech-pink hover:shadow-[0_0_15px_rgba(244,114,182,0.3)] transition cursor-default"># Proactive Memory</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-yellow hover:text-tech-yellow hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition cursor-default"># Spatial Intelligence</span>
             </div>
         </div>
     </section>
@@ -271,50 +282,55 @@
     <!-- 3. Leader Profile Section -->
     <section id="team" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
+            
             <div class="flex items-end mb-12 gap-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900">团队负责人</h2>
-                <div class="h-1 flex-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-transparent rounded-full mb-3 opacity-30"></div>
-                <i class="fas fa-id-card text-4xl text-purple-500 animate-float"></i>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 drop-shadow-sm">Team Leader</h2>
+                <div class="h-1 flex-1 bg-gradient-to-r from-tech-cyan via-tech-purple to-transparent rounded-full mb-3 opacity-70"></div>
+                <i class="fas fa-id-card text-4xl text-tech-purple animate-float"></i>
             </div>
 
-            <!-- Bento Grid Layout for Leader -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-24">
-                <!-- Profile Card -->
+                
+                <!-- 1. Profile Card -->
                 <div class="lg:col-span-4 flex flex-col gap-6">
                     <div class="holo-border rounded-2xl p-[1px]">
-                        <div class="bg-white rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden">
-                            <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-blue-100/50 to-transparent"></div>
+                        <div class="bg-tech-card rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden bg-opacity-80 backdrop-blur-xl">
+                            <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-tech-cyan/20 to-transparent"></div>
+                            
                             <div class="relative w-40 h-40 mt-4 mb-6 group">
-                                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur opacity-40 group-hover:opacity-70 transition duration-500 animate-spin-slow"></div>
-                                <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white bg-white shadow-lg">
+                                <div class="absolute -inset-2 bg-gradient-to-r from-tech-cyan to-tech-pink rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-spin-slow"></div>
+                                <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/50 bg-white">
                                     <img src="image/SijieCheng.jpg" alt="Ada Cheng" class="w-full h-full object-cover">
                                 </div>
                                 <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-white animate-pulse"></div>
                             </div>
-                            <h3 class="text-3xl font-bold text-slate-900 mb-1">程思婕 (Ada)</h3>
-                            <p class="text-blue-600 font-mono text-sm mb-4">清华大学 博士候选人</p>
-                            <div class="w-full bg-blue-50/80 border border-blue-100 rounded-lg p-3 mb-6 text-left shadow-inner">
+
+                            <h3 class="text-3xl font-bold text-slate-900 mb-1">Sijie (Ada) Cheng</h3>
+                            <p class="text-tech-cyan font-mono text-sm mb-4">Ph.D. Candidate @ Tsinghua Univ.</p>
+                            
+                            <div class="w-full bg-tech-cyan/5 border border-tech-cyan/30 rounded-lg p-3 mb-6 text-left hover:bg-tech-cyan/10 transition duration-300">
                                 <div class="flex items-center gap-2 mb-1">
                                     <span class="relative flex h-3 w-3">
-                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-pink opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-tech-pink shadow-[0_0_10px_#ff0055]"></span>
                                     </span>
-                                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wide">招聘中</span>
+                                    <span class="text-xs font-bold text-tech-pink uppercase tracking-wide">Hiring</span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-snug">
-                                    寻找对智能眼镜AI技术充满热情的全职员工及实习生。欢迎科研合作。
+                                    Looking for full-time employees & interns for AI in smart glasses. Open for research cooperation.
                                 </p>
                             </div>
+
                             <div class="flex flex-wrap justify-center gap-3 w-full">
-                                <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
+                                <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-50 hover:bg-slate-100 hover:text-tech-cyan hover:border-tech-cyan border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
                                     <i class="fab fa-github"></i> GitHub
                                 </a>
-                                <a href="mailto:your-email@example.com" class="flex-1 min-w-[100px] py-2 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
-                                    <i class="fas fa-envelope"></i> 邮箱
+                                <a href="mailto:your-email@example.com" class="flex-1 min-w-[100px] py-2 rounded bg-slate-50 hover:bg-slate-100 hover:text-tech-purple hover:border-tech-purple border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-envelope"></i> Email
                                 </a>
                                 <div class="relative group flex-1 min-w-[100px]">
                                     <button class="w-full py-2 rounded bg-green-50 border border-green-200 text-green-600 text-sm hover:bg-green-100 transition flex items-center justify-center gap-2">
-                                        <i class="fab fa-weixin"></i> 微信
+                                        <i class="fab fa-weixin"></i> WeChat
                                     </button>
                                     <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-slate-800 text-white text-xs font-bold rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap z-50">
                                         ID: AdaChengSijie
@@ -325,204 +341,208 @@
                     </div>
                 </div>
 
-                <!-- Leader Details -->
+                <!-- 2. Main Content -->
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2 glass-panel rounded-2xl p-8 shine-effect bg-white/80">
+                    <!-- About & Research -->
+                    <div class="md:col-span-2 glass-panel rounded-2xl p-8 relative overflow-hidden">
                          <div class="absolute top-0 right-0 p-6 opacity-10">
-                            <i class="fas fa-brain text-8xl text-blue-900"></i>
+                            <i class="fas fa-brain text-8xl text-slate-900"></i>
                         </div>
                         <h4 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                            <i class="fas fa-lightbulb text-yellow-500 mr-2 drop-shadow-sm"></i> 研究重心
+                            <i class="fas fa-lightbulb text-tech-yellow mr-2 shadow-yellow-500"></i> Research Focus
                         </h4>
                         <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            我是<strong>清华大学</strong>计算机系的二年级博士生，师从刘洋教授。此前于复旦大学获得硕士学位。
+                            I am a second-year Ph.D. candidate at <strong>Tsinghua University</strong>, advised by Prof. Yang Liu. Previously received Master's from Fudan University. 
                         </p>
-                        <p class="text-slate-800 font-medium mb-3 border-l-4 border-cyan-400 pl-3">
-                            "第一视角基础模型 (Egocentric Foundation Model) 代表了下一代基础模型的发展方向。"
+                        <p class="text-slate-900 font-medium mb-3 border-l-2 border-tech-cyan pl-3">
+                            "Egocentric Foundation Model represents the next generation of Foundation Models."
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                            <div class="bg-blue-50/80 rounded p-3 border border-blue-100 hover:border-blue-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-blue-500 mb-1 text-xl"><i class="fas fa-eye"></i></div>
-                                <div class="font-bold text-sm text-slate-800">第一视角理解</div>
+                            <div class="bg-blue-50 rounded p-3 border border-blue-100 hover:border-tech-cyan hover:bg-blue-100 transition duration-300 cursor-default">
+                                <div class="text-tech-cyan mb-1 text-xl"><i class="fas fa-eye"></i></div>
+                                <div class="font-bold text-sm text-slate-700">Egocentric Understanding</div>
                                 <div class="text-xs text-slate-500 mt-1">EgoThink | VidEgoThink</div>
                             </div>
-                            <div class="bg-purple-50/80 rounded p-3 border border-purple-100 hover:border-purple-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-purple-500 mb-1 text-xl"><i class="fas fa-mobile-alt"></i></div>
-                                <div class="font-bold text-sm text-slate-800">端侧模型训练</div>
+                            <div class="bg-purple-50 rounded p-3 border border-purple-100 hover:border-tech-purple hover:bg-purple-100 transition duration-300 cursor-default">
+                                <div class="text-tech-purple mb-1 text-xl"><i class="fas fa-mobile-alt"></i></div>
+                                <div class="font-bold text-sm text-slate-700">On-Device Training</div>
                                 <div class="text-xs text-slate-500 mt-1">OpenChat | ConvLLaVA</div>
                             </div>
-                            <div class="bg-pink-50/80 rounded p-3 border border-pink-100 hover:border-pink-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-pink-500 mb-1 text-xl"><i class="fas fa-network-wired"></i></div>
-                                <div class="font-bold text-sm text-slate-800">内隐知识探索</div>
+                            <div class="bg-pink-50 rounded p-3 border border-pink-100 hover:border-tech-pink hover:bg-pink-100 transition duration-300 cursor-default">
+                                <div class="text-tech-pink mb-1 text-xl"><i class="fas fa-network-wired"></i></div>
+                                <div class="font-bold text-sm text-slate-700">Implicit Knowledge</div>
                                 <div class="text-xs text-slate-500 mt-1">FedGEMs | StableToolBench</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect bg-white/80">
-                        <h4 class="text-lg font-bold text-slate-800 mb-4 sticky top-0 bg-white/95 backdrop-blur-sm flex items-center z-10 py-2 border-b border-slate-100">
-                            <i class="fas fa-briefcase text-blue-500 mr-2"></i> 工作经历
+                    <!-- Experience Timeline -->
+                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col">
+                        <h4 class="text-lg font-bold text-slate-800 mb-4 sticky top-0 bg-white/80 backdrop-blur-sm flex items-center z-10">
+                            <i class="fas fa-briefcase text-tech-blue mr-2"></i> Experience
                         </h4>
-                        <div class="overflow-y-auto custom-scroll pr-2 space-y-6 pt-2">
-                            <div class="relative pl-6 border-l-2 border-blue-300">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
-                                <h5 class="text-sm font-bold text-slate-900">雷鸟创新 (Rayneo)</h5>
-                                <p class="text-xs text-blue-600 mb-1">大模型算法部 实习生 (2025.01 - 至今)</p>
-                                <p class="text-xs text-slate-500">负责人: 李宏伟 (CEO)</p>
+                        <div class="overflow-y-auto custom-scroll pr-2 space-y-6">
+                            <div class="relative pl-6 border-l-2 border-tech-cyan">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-tech-cyan rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+                                <h5 class="text-sm font-bold text-slate-900">Rayneo</h5>
+                                <p class="text-xs text-tech-cyan mb-1">Intern (Jan. 2025 - Present)</p>
+                                <p class="text-xs text-slate-500">Manager: Hongwei Li (CEO)</p>
                             </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
+                            <div class="relative pl-6 border-l-2 border-slate-300">
                                 <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">腾讯 (Robotics X)</h5>
-                                <p class="text-xs text-slate-500 mb-1">研究实习生 (2024)</p>
-                                <p class="text-xs text-slate-400">导师: Lei Han</p>
+                                <h5 class="text-sm font-bold text-slate-700">Tencent (Robotics X)</h5>
+                                <p class="text-xs text-slate-500 mb-1">Research Intern (2024)</p>
+                                <p class="text-xs text-slate-400">Manager: Lei Han</p>
                             </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
+                            <div class="relative pl-6 border-l-2 border-slate-300">
                                 <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">零一万物 (01.AI)</h5>
-                                <p class="text-xs text-slate-500 mb-1">预训练组实习生 (2023-2024)</p>
-                                <p class="text-xs text-slate-400">导师: 李先刚</p>
+                                <h5 class="text-sm font-bold text-slate-700">01.AI Company</h5>
+                                <p class="text-xs text-slate-500 mb-1">Pre-training Group Intern (2023-2024)</p>
+                                <p class="text-xs text-slate-400">Manager: Xiangang Li</p>
                             </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
+                            <div class="relative pl-6 border-l-2 border-slate-300">
                                 <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">创新工场</h5>
-                                <p class="text-xs text-slate-500 mb-1">投资实习生 (2023)</p>
+                                <h5 class="text-sm font-bold text-slate-700">Sinovation Ventures</h5>
+                                <p class="text-xs text-slate-500 mb-1">Investment Intern (2023)</p>
                             </div>
-                             <div class="relative pl-6 border-l-2 border-slate-200">
+                             <div class="relative pl-6 border-l-2 border-slate-300">
                                 <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">上海人工智能实验室</h5>
-                                <p class="text-xs text-slate-500 mb-1">NLP组 (2022)</p>
+                                <h5 class="text-sm font-bold text-slate-700">Shanghai AI Lab</h5>
+                                <p class="text-xs text-slate-500 mb-1">NLP Group (2022)</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect bg-white/80">
-                        <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center sticky top-0 bg-white/95 backdrop-blur-sm z-10 py-2 border-b border-slate-100">
-                            <i class="fas fa-trophy text-yellow-500 mr-2"></i> 精选荣誉
+                    <!-- Awards & Talks -->
+                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col">
+                        <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center sticky top-0 bg-white/80 backdrop-blur-sm z-10">
+                            <i class="fas fa-trophy text-tech-yellow mr-2"></i> Selected Awards
                         </h4>
-                        <div class="overflow-y-auto custom-scroll pr-2 pt-2">
+                        <div class="overflow-y-auto custom-scroll pr-2">
                             <ul class="space-y-3 text-sm">
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-star"></i></span>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-star"></i></span>
                                     <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">中国科协青年人才托举工程</strong>
-                                        博士生专项计划 (2025)
+                                        <strong class="text-slate-900 block group-hover:text-tech-yellow transition">CAST Young Talents Project 2025</strong>
+                                        Ph.D. Program - China Computer Federation
                                     </span>
                                 </li>
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-award"></i></span>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-award"></i></span>
                                     <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">杰出论文奖</strong>
+                                        <strong class="text-slate-900 block group-hover:text-tech-yellow transition">Outstanding Paper Award</strong>
                                         MFM-EAI Workshop @ ICML 2024
                                     </span>
                                 </li>
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-graduation-cap"></i></span>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-graduation-cap"></i></span>
                                     <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">国家奖学金</strong>
-                                        2021-2022
+                                        <strong class="text-slate-900 block group-hover:text-tech-yellow transition">National Scholarship</strong>
+                                        China, 2021-2022
                                     </span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-scroll"></i></span>
+                                    <span class="text-tech-yellow mt-1"><i class="fas fa-scroll"></i></span>
                                     <span class="text-slate-600">
-                                        上海市计算机学会优秀硕士学位论文奖
+                                        Outstanding Master’s Thesis Award (Shanghai Computer Society)
                                     </span>
                                 </li>
                                  <li class="flex gap-3">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-basketball-ball"></i></span>
+                                    <span class="text-tech-yellow mt-1"><i class="fas fa-basketball-ball"></i></span>
                                     <span class="text-slate-600">
-                                        腾讯篮球协会第一名 (2024)
+                                        1st Place, Tencent Basketball Association (2024)
                                     </span>
                                 </li>
                             </ul>
                             
                             <h4 class="text-lg font-bold text-slate-800 mt-8 mb-4 flex items-center">
-                                <i class="fas fa-microphone text-pink-500 mr-2"></i> 近期演讲
+                                <i class="fas fa-microphone text-tech-pink mr-2"></i> Recent Talks
                             </h4>
                              <ul class="space-y-3 text-xs text-slate-500">
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.11</span> - 大模型时代科研的核心竞争力
+                                <li class="border-l-2 border-slate-300 pl-3 hover:border-tech-pink hover:text-slate-900 transition cursor-default">
+                                    <span class="text-slate-700 font-semibold">2024.11</span> - Core Competitiveness of Scientific Research in the Era of Large Models
                                 </li>
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.09</span> - EgoThink @ 智东西公开课
+                                <li class="border-l-2 border-slate-300 pl-3 hover:border-tech-pink hover:text-slate-900 transition cursor-default">
+                                    <span class="text-slate-700 font-semibold">2024.09</span> - EgoThink @ ZhiDX
                                 </li>
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.03</span> - OpenChat @ 极大似然社区
+                                <li class="border-l-2 border-slate-300 pl-3 hover:border-tech-pink hover:text-slate-900 transition cursor-default">
+                                    <span class="text-slate-700 font-semibold">2024.03</span> - OpenChat @ Max-likelihood Community
                                 </li>
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <!-- 4. Team Culture & Gallery -->
             <div class="grid md:grid-cols-2 gap-8 mb-20">
-                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-blue-300 transition duration-500 shine-effect">
+                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-tech-cyan/50 transition duration-500">
                     <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                        <i class="fas fa-users-cog mr-3 text-blue-500"></i> 团队基因
+                        <i class="fas fa-users-cog mr-3 text-tech-cyan drop-shadow-[0_0_8px_#22d3ee]"></i> Team DNA
                     </h3>
                     <ul class="space-y-4 text-slate-600">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-3 mt-1">▹</span>
-                            <span><strong>年轻且极客：</strong> 公司最年轻的团队，人才密度极高，实习生占比高，氛围活跃。</span>
+                            <span class="text-tech-cyan mr-3 mt-1">▹</span>
+                            <span><strong>Young & Geeky:</strong> The youngest team in the company, with high talent density and a geeky atmosphere.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-3 mt-1">▹</span>
-                            <span><strong>端云协同：</strong> 大模型算法部门主要负责面向智能眼镜的端云AI平台搭建，及智能体构建。</span>
+                            <span class="text-tech-cyan mr-3 mt-1">▹</span>
+                            <span><strong>Cloud-Edge Synergy:</strong> Responsible for building AI platforms for smart glasses and constructing intelligent agents.</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-purple-300 transition duration-500 shine-effect">
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-tech-purple/50 transition duration-500">
                     <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                        <i class="fas fa-bullseye mr-3 text-purple-500"></i> 我们的目标
+                        <i class="fas fa-bullseye mr-3 text-tech-purple drop-shadow-[0_0_8px_#c084fc]"></i> Our Goals
                     </h3>
                     <div class="space-y-4">
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold group-hover/item:scale-110 transition">快</div>
+                            <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold group-hover/item:scale-110 transition">Fast</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">效率足够快</h4>
-                                <p class="text-xs text-slate-500">建立认知-落地-创新，全链路极速响应。</p>
+                                <h4 class="text-slate-900 font-bold">Fast Efficiency</h4>
+                                <p class="text-xs text-slate-500">Complete the "Cognition-Implementation-Innovation" loop rapidly.</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-bold group-hover/item:scale-110 transition">变</div>
+                            <div class="w-10 h-10 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-bold group-hover/item:scale-110 transition">Adapt</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">适应性足够强</h4>
-                                <p class="text-xs text-slate-500">拥抱技术突破，第一时间调整航向。</p>
+                                <h4 class="text-slate-900 font-bold">Strong Adaptability</h4>
+                                <p class="text-xs text-slate-500">React instantly to technological breakthroughs and adjust course.</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-pink-100 flex items-center justify-center text-pink-600 font-bold group-hover/item:scale-110 transition">善</div>
+                            <div class="w-10 h-10 rounded bg-pink-100 flex items-center justify-center text-pink-600 font-bold group-hover/item:scale-110 transition">Good</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">文化氛围好</h4>
-                                <p class="text-xs text-slate-500">互相成就，AI向善，改变世界。</p>
+                                <h4 class="text-slate-900 font-bold">Great Culture</h4>
+                                <p class="text-xs text-slate-500">Mutual achievement, AI for Good, changing the world.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 照片墙 -->
+            <!-- Gallery -->
             <div class="space-y-6">
-                <h3 class="text-xl font-bold text-slate-500 uppercase tracking-widest mb-4">团队影集</h3>
+                <h3 class="text-xl font-bold text-slate-500 uppercase tracking-widest mb-4">Team Gallery</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-64">
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/海边团建.png" alt="海边团建" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="image/海边团建.png" alt="Team Building" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">假日时光</span>
+                            <span class="text-white font-bold">Holiday Spirit</span>
                         </div>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/聚餐时光.png" alt="聚餐时光" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="image/聚餐时光.png" alt="Team Dinner" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">团队聚餐</span>
+                            <span class="text-white font-bold">Team Dinner</span>
                         </div>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/办公室日常.jpg" alt="办公室日常" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="image/办公室日常.jpg" alt="Office Life" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">工作日常</span>
+                            <span class="text-white font-bold">Office Life</span>
                         </div>
                     </div>
                 </div>
@@ -534,81 +554,81 @@
     <section id="research" class="py-24 bg-white relative border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <h2 class="text-3xl font-bold mb-8 flex items-center text-slate-900">
-                <span class="text-blue-500 mr-2">/</span> 研究方向
+                <span class="text-tech-cyan mr-2">/</span> Research Directions
             </h2>
 
             <div class="text-center max-w-4xl mx-auto mb-16">
                 <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
-                    <h3 class="text-xl font-bold text-purple-600 mb-4">研究概览</h3>
+                    <h3 class="text-xl font-bold text-purple-600 mb-4">Overview</h3>
                     <p class="text-slate-600 leading-relaxed text-lg">
-                        我们的研究致力于弥合物理世界与数字智能之间的鸿沟。通过构建<span class="text-slate-900 font-semibold">第一视角感知的多模态大模型</span>，我们赋予智能眼镜“看懂世界”的能力；通过<span class="text-slate-900 font-semibold">端侧高效训练与推理</span>，我们确保智能触手可及且隐私安全；通过探索<span class="text-slate-900 font-semibold">内隐知识</span>，让 AI 具备类似人类的直觉与常识。
+                        Our research aims to bridge the gap between the physical world and digital intelligence. By building <span class="text-slate-900 font-semibold">Egocentric Multimodal Large Models</span>, we empower smart glasses to "understand" the world; through <span class="text-slate-900 font-semibold">Efficient On-Device Training & Inference</span>, we ensure intelligence is accessible and privacy-secure; by exploring <span class="text-slate-900 font-semibold">Implicit Knowledge</span>, we enable AI to possess intuition and common sense similar to humans.
                     </p>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Direction 1 -->
-                <div class="glass-panel rounded-xl p-8 hover:border-blue-400 transition duration-300 group h-full shine-effect bg-white">
+                <div class="glass-panel rounded-xl p-8 hover:border-tech-blue/50 transition duration-300 group h-full shine-effect bg-white">
                     <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-blue-100 transition group-hover:scale-110">
-                        <i class="fas fa-eye text-3xl text-blue-500"></i>
+                        <i class="fas fa-eye text-3xl text-slate-400 group-hover:text-tech-blue"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition">第一视角理解</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-tech-blue transition">Egocentric Understanding</h3>
                     <ul class="space-y-4 text-slate-500 text-sm">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 1：</strong> [待填充] 针对第一视角视频的高效时空建模方法。</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
+                            <span><strong>Achievement 1:</strong> Efficient spatiotemporal modeling for egocentric video.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 2：</strong> [待填充] 复杂场景下的动态物体交互意图识别。</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
+                            <span><strong>Achievement 2:</strong> Intent recognition for dynamic object interaction in complex scenes.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 3：</strong> [待填充] EgoThink: 评估多模态大模型的第一视角思考能力。</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
+                            <span><strong>Achievement 3:</strong> EgoThink: Evaluating the first-person thinking capability of multimodal large models.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Direction 2 -->
-                <div class="glass-panel rounded-xl p-8 hover:border-purple-400 transition duration-300 group h-full shine-effect bg-white">
+                <div class="glass-panel rounded-xl p-8 hover:border-tech-purple/50 transition duration-300 group h-full shine-effect bg-white">
                     <div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center mb-6 group-hover:bg-purple-100 transition group-hover:scale-110">
-                        <i class="fas fa-microchip text-3xl text-purple-500"></i>
+                        <i class="fas fa-microchip text-3xl text-slate-400 group-hover:text-tech-purple"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-purple-600 transition">端侧模型训练</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-tech-purple transition">On-Device Training</h3>
                     <ul class="space-y-4 text-slate-500 text-sm">
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 1：</strong> [待填充] 极低功耗下的端侧 LLM 训练架构。</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
+                            <span><strong>Achievement 1:</strong> On-device LLM training architecture under extremely low power consumption.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 2：</strong> [待填充] 针对智能眼镜场景的模型量化与压缩技术。</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
+                            <span><strong>Achievement 2:</strong> Model quantization and compression techniques tailored for smart glasses.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 3：</strong> [待填充] 端云协同的持续学习机制。</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
+                            <span><strong>Achievement 3:</strong> Cloud-Edge collaborative continuous learning mechanisms.</span>
                         </li>
                     </ul>
                 </div>
 
                  <!-- Direction 3 -->
-                 <div class="glass-panel rounded-xl p-8 hover:border-pink-400 transition duration-300 group h-full shine-effect bg-white">
+                 <div class="glass-panel rounded-xl p-8 hover:border-tech-pink/50 transition duration-300 group h-full shine-effect bg-white">
                     <div class="w-16 h-16 rounded-full bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-100 transition group-hover:scale-110">
-                        <i class="fas fa-brain text-3xl text-pink-500"></i>
+                        <i class="fas fa-brain text-3xl text-slate-400 group-hover:text-tech-pink"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-pink-600 transition">内隐知识探索</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-tech-pink transition">Implicit Knowledge</h3>
                     <ul class="space-y-4 text-slate-500 text-sm">
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 1：</strong> [待填充] 大模型幻觉机制解析与抑制方法。</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
+                            <span><strong>Achievement 1:</strong> Mechanism analysis and suppression methods for large model hallucinations.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 2：</strong> [待填充] 从非结构化数据中提取常识性知识图谱。</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
+                            <span><strong>Achievement 2:</strong> Extracting commonsense knowledge graphs from unstructured data.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
-                            <span><strong>研究成果点 3：</strong> [待填充] 模拟人类直觉的快速推理路径研究。</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
+                            <span><strong>Achievement 3:</strong> Research on rapid inference paths simulating human intuition.</span>
                         </li>
                     </ul>
                 </div>
@@ -616,123 +636,123 @@
         </div>
     </section>
 
-    <!-- 6. Join Us (Cool Nested Cards) -->
+    <!-- 6. Join Us (Nested Cards - Translated) -->
     <section id="careers" class="py-24 relative z-10 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-xs font-mono tracking-widest uppercase mb-4">We Are Hiring</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">加入我们，共创未来</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Join Us, Create the Future</h2>
                 <p class="text-slate-500 max-w-2xl mx-auto text-lg">
-                    我们寻找对 AI、计算机视觉和 AR 充满热情的伙伴。<br>提供极具竞争力的薪酬、海量 GPU 算力支持以及与顶尖牛人共事的机会。
+                    We are looking for partners passionate about AI, Computer Vision, and AR.<br>We offer competitive compensation, massive GPU computing support, and the opportunity to work with top talent.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- 卡片 1: 社会招聘 (正式岗) -->
+                <!-- Card 1: Social Recruitment (Full-time) -->
                 <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect bg-white">
                     <div class="flex-grow flex flex-col overflow-hidden">
                         <div class="flex justify-between items-start mb-4 flex-shrink-0">
-                            <div class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold">社会招聘</div>
-                            <span class="text-blue-500 font-bold text-xl"><i class="fas fa-briefcase"></i></span>
+                            <div class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold">Social Recruitment</div>
+                            <span class="text-tech-blue font-bold text-xl"><i class="fas fa-briefcase"></i></span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition flex-shrink-0">正式岗位</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-tech-blue transition flex-shrink-0">Full-time Positions</h3>
                         
-                        <!-- 滚动区域 -->
+                        <!-- Scroll Area -->
                         <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
                             <!-- Job Item 1 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">AI研发工程师</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责大模型能力搭建，AI算法落地，后端系统架构设计与开发，支撑高并发AI服务。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">计算机硕士及以上；熟悉微服务架构(MySQL/Redis/Kafka/Docker)；精通Python/Java/Golang；有云开发及RAG/Agent落地经验。</p>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">AI R&D Engineer</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Responsible for large model capability building, AI algorithm implementation, backend system architecture design, and supporting high-concurrency AI services.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Master's degree in CS or above; familiar with microservices architecture (MySQL/Redis/Kafka/Docker); proficient in Python/Java/Golang; experience in cloud development and RAG/Agent implementation.</p>
                             </div>
 
                             <!-- Job Item 2 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">智能语音算法工程师</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责ASR核心技术优化，模型迭代，解决唤醒、降噪问题；端侧语音交互全链路优化。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE硕士以上；熟练C++/Python；深入理解ASR(Conformer/Whisper)原理；熟悉PyTorch/TensorFlow。</p>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Intelligent Speech Algorithm Engineer</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Optimize core ASR technologies, model iteration, solve wake-up and noise reduction issues; optimize end-to-end voice interaction on devices.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Master's in CS/EE or above; proficient in C++/Python; deep understanding of ASR (Conformer/Whisper) principles; familiar with PyTorch/TensorFlow.</p>
                             </div>
 
                             <!-- Job Item 3 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">音频算法工程师 (前端算法)</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">研发音频AEC算法，满足回声消除指标；设计波束成形(Beamforming)算法；优化VAD。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">精通信号处理；熟悉波束成形；精通Matlab/Python及C/C++移植；有嵌入式/DSP优化经验。</p>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Audio Algorithm Engineer (Frontend)</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop audio AEC algorithms, meet echo cancellation metrics; design Beamforming algorithms; optimize VAD.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Proficient in signal processing; familiar with beamforming; proficient in Matlab/Python and C/C++ porting; experience in embedded/DSP optimization.</p>
                             </div>
 
                             <!-- Job Item 4 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">语音系统工程师</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责AR/AI眼镜音频链路设计；主导音频风险标定；统筹DSP/MCU资源分配。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">消费类音频产品经验；精通AEC/Beamforming/VAD算法落地；熟悉高通/海思平台。</p>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Speech System Engineer</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Responsible for AR/AI glasses audio link design; lead audio risk calibration; coordinate DSP/MCU resource allocation.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Experience with consumer audio products; proficient in AEC/Beamforming/VAD algorithm implementation; familiar with Qualcomm/Hisilicon platforms.</p>
                             </div>
 
                             <!-- Job Item 5 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">大模型算法工程师 (Memory)</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">研发场景化记忆算法，提升个性化存储与检索；优化用户画像与交互体验；构建记忆数据链路。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE硕士以上；精通Python/PyTorch；有大模型微调、RAG、Agent-memory项目经验。</p>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Large Model Algorithm Engineer (Memory)</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop scenario-based memory algorithms, improve personalized storage and retrieval; optimize user profiling and interaction experience; build memory data pipelines.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Master's in CS/EE or above; proficient in Python/PyTorch; experience in LLM fine-tuning, RAG, and Agent-memory projects.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://www.zhipin.com/web/geek/jobs?city=101280600&query=%E9%9B%B7%E9%B8%9F%E5%88%9B%E6%96%B0" target="_blank" class="block text-center mt-6 w-full py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition font-bold shadow-md hover:shadow-blue-200 relative z-20 flex-shrink-0">
-                        立即沟通
+                    <a href="https://www.zhipin.com/web/geek/jobs?city=101280600&query=%E9%9B%B7%E9%B8%9F%E5%88%9B%E6%96%B0" target="_blank" class="block text-center mt-6 w-full py-3 bg-tech-blue border border-tech-blue text-white rounded hover:bg-sky-600 transition font-bold shadow-md hover:shadow-sky-200 relative z-20 flex-shrink-0">
+                        Chat Now
                     </a>
                 </div>
 
-                <!-- 卡片 2: 校园招聘 (实习岗) -->
+                <!-- Card 2: Campus Recruitment (Internship) -->
                 <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect bg-white">
                     <div class="flex-grow flex flex-col overflow-hidden">
                         <div class="flex justify-between items-start mb-4 flex-shrink-0">
-                            <div class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded font-bold">校园招聘</div>
-                            <span class="text-purple-500 font-bold text-xl"><i class="fas fa-graduation-cap"></i></span>
+                            <div class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded font-bold">Campus Recruitment</div>
+                            <span class="text-tech-purple font-bold text-xl"><i class="fas fa-graduation-cap"></i></span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-purple-600 transition flex-shrink-0">实习岗位</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-tech-purple transition flex-shrink-0">Intern Positions</h3>
                         
-                        <!-- 滚动区域 -->
+                        <!-- Scroll Area -->
                         <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
                             <!-- Intern 1 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">大模型算法实习生</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">1. RAG/检索增强生成；2. 意图识别/NLP；3. AIGC/多模态。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">硕士/博士在读；熟练Python；熟悉Transformers/LLM原理；有RAG/NLP/Agent经验；有顶会论文(ACL/CVPR等)优先。</p>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">Large Model Algorithm Intern</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">1. RAG: Build/optimize RAG systems, vector retrieval, KB construction. <br> 2. Intent Recognition/NLP: Build intent classification models, optimize Prompts. <br> 3. AIGC/Multimodal: Participate in text-to-image, multimodal generation model training.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Master's/Ph.D. student; proficient in Python; familiar with Transformers/LLM principles; experience in RAG/NLP/Agent; top conference papers (ACL/CVPR etc.) preferred.</p>
                             </div>
 
                             <!-- Intern 2 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">语音算法实习生</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">持续优化ASR和TTS系统；跟踪前沿技术；负责云端服务架构与端侧算法优化；开发声纹识别。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE本科及以上；熟练C++/Python；深入理解ASR/TTS原理(Conformer/Whisper/FastSpeech)；熟悉TensorFlow/PyTorch。</p>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">Speech Algorithm Intern</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Continuously optimize ASR and TTS systems; track cutting-edge technologies; responsible for cloud service architecture and on-device algorithm optimization; develop voiceprint recognition.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Bachelor's in CS/EE or above; proficient in C++/Python; deep understanding of ASR/TTS principles (Conformer/Whisper/FastSpeech); familiar with TensorFlow/PyTorch.</p>
                             </div>
 
                             <!-- Intern 3 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">AI效能实习生</h4>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">开发AI Agent应用；针对研发部门设计AI Coding实施方案；筛选AI提效工具；解答工具使用问题。</p>
-                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">本科及以上；了解LangGraph/AgentScope；熟悉Cursor/Claude等AI Coding工具；对AI工具有强烈兴趣。</p>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">AI Efficiency Intern</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop AI Agent applications; design AI Coding implementation plans for R&D; screen AI efficiency tools; support tool usage.</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">Bachelor's or above; understand LangGraph/AgentScope; familiar with AI Coding tools like Cursor/Claude; strong interest in AI tools.</p>
                             </div>
                         </div>
                     </div>
 
-                    <a href="https://m.zhipin.com/job_detail/5a7a8717dc5e6c5603F939S8GVBX.html?ka=job_list_9_blank&lid=1GGohgMta6a.search.9" target="_blank" class="block text-center mt-6 w-full py-3 bg-purple-600 text-white rounded hover:bg-purple-700 transition font-bold shadow-md hover:shadow-purple-200 relative z-20 flex-shrink-0">
-                        立即沟通
+                    <a href="https://m.zhipin.com/job_detail/5a7a8717dc5e6c5603F939S8GVBX.html?ka=job_list_9_blank&lid=1GGohgMta6a.search.9" target="_blank" class="block text-center mt-6 w-full py-3 bg-tech-purple border border-tech-purple text-white rounded hover:bg-violet-600 transition font-bold shadow-md hover:shadow-violet-200 relative z-20 flex-shrink-0">
+                        Chat Now
                     </a>
                 </div>
             </div>
@@ -743,7 +763,7 @@
     <footer class="border-t border-slate-200 bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <h4 class="font-bold text-xl text-slate-800 tracking-wider">Rayneo<span class="text-blue-600">AI</span></h4>
+                <h4 class="font-bold text-xl text-slate-800 tracking-wider">Rayneo<span class="text-tech-blue">AI</span></h4>
                 <p class="text-xs text-slate-500 mt-2">© 2025 Rayneo AI Lab. All rights reserved.</p>
             </div>
             
