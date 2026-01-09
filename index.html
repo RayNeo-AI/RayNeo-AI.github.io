@@ -12,14 +12,13 @@
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#f0f9ff',       /* 修改：极淡的冰蓝色背景 (Sky-50) */
-                            card: '#ffffff',     /* 修改：纯白卡片 */
-                            blue: '#0ea5e9',     /* 天蓝 (Sky-500) */
-                            cyan: '#06b6d4',     /* 青色 (Cyan-500) */
-                            purple: '#8b5cf6',   /* 紫色 (Violet-500) */
+                            bg: '#f0f9ff',       /* 极淡的冰蓝色背景 */
+                            card: '#ffffff',     /* 纯白卡片 */
+                            blue: '#0ea5e9',     /* 天蓝 */
+                            cyan: '#06b6d4',     /* 青色 */
+                            purple: '#8b5cf6',   /* 紫色 */
                             pink: '#ec4899',     /* 粉色 */
-                            dark: '#0f172a',     /* 深色用于强对比文字 */
-                            text: '#334155'      /* 主要文字颜色 (Slate-700) */
+                            text: '#334155'      /* 主要文字颜色 */
                         }
                     },
                     animation: {
@@ -58,7 +57,7 @@
             overflow-x: hidden; 
         }
         
-        /* 科技网格 - 浅蓝网格 */
+        /* 科技网格 */
         .bg-grid-tech {
             background-size: 50px 50px;
             background-image: 
@@ -67,18 +66,15 @@
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
 
-        /* 1. 玻璃卡片：冰晶风格 */
+        /* 玻璃卡片 */
         .glass-panel {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(20px);       
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            
-            /* 酷炫的彩色投影 */
             box-shadow: 
                 0 4px 6px -1px rgba(14, 165, 233, 0.05), 
                 0 10px 15px -3px rgba(139, 92, 246, 0.05);
-            
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
@@ -87,7 +83,6 @@
         .glass-panel:hover {
             background: rgba(255, 255, 255, 0.95);
             border-color: #38bdf8;
-            /* 悬停时增强光晕 */
             box-shadow: 
                 0 20px 40px -5px rgba(14, 165, 233, 0.2), 
                 0 0 20px rgba(56, 189, 248, 0.1);
@@ -95,14 +90,14 @@
             z-index: 10;
         }
 
-        /* 2. 招聘卡片：高亮悬浮 */
+        /* 招聘大卡片容器 */
         .job-card {
             position: relative;
             background: #ffffff;
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid #e0f2fe; /* 极浅蓝边框 */
+            border: 1px solid #e0f2fe; 
             height: 600px;
             display: flex;
             flex-direction: column;
@@ -112,11 +107,10 @@
         .job-card:hover {
             border-color: #38bdf8;
             transform: translateY(-5px);
-            /* 强烈的蓝色光晕投影 */
             box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.3);
         }
 
-        /* 卡片顶部流光条 */
+        /* 招聘卡片顶部流光 */
         .job-card::before {
             content: '';
             position: absolute;
@@ -126,7 +120,32 @@
             animation: text-shimmer 3s linear infinite;
         }
 
-        /* 文字流光 (加深颜色以适配浅底) */
+        /* ------- 新增：子职位卡片样式 (Inner Job Items) ------- */
+        .job-item {
+            background: #f8fafc; /* Slate-50 */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* 左侧蓝色系悬停 */
+        .job-item-blue:hover {
+            background: #f0f9ff; /* Sky-50 */
+            border-color: #38bdf8;
+            box-shadow: 0 4px 12px -2px rgba(14, 165, 233, 0.15);
+            transform: translateX(4px);
+        }
+
+        /* 右侧紫色系悬停 */
+        .job-item-purple:hover {
+            background: #f5f3ff; /* Violet-50 */
+            border-color: #a78bfa;
+            box-shadow: 0 4px 12px -2px rgba(139, 92, 246, 0.15);
+            transform: translateX(4px);
+        }
+
+        /* 文字流光 */
         .text-fluid-gradient {
             background: linear-gradient(270deg, #0284c7, #7c3aed, #0ea5e9, #0284c7);
             background-size: 300% auto;
@@ -157,11 +176,11 @@
 
         /* 滚动条 */
         .custom-scroll::-webkit-scrollbar { width: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: #f0f9ff; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 3px; }
-        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        /* 扫光特效 (白色高光) */
+        /* 扫光特效 */
         .shine-effect::before {
             content: "";
             position: absolute;
@@ -176,42 +195,25 @@
 </head>
 <body class="antialiased selection:bg-cyan-100 selection:text-cyan-900">
 
-    <!-- 全局背景装饰 (Ice Cyber 风格) -->
+    <!-- 全局背景装饰 -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#f0f9ff]">
-        <!-- 1. 顶部极光 (Aurora) -->
         <div class="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-100/50 via-cyan-50/30 to-transparent"></div>
-
-        <!-- 2. 动态光斑 (混合模式调整为适合浅色背景) -->
-        <!-- 左上：冰蓝色 -->
         <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-blue-300/30 rounded-full filter blur-[100px] opacity-70 animate-blob mix-blend-multiply"></div>
-        <!-- 右上：淡紫色 -->
         <div class="absolute top-[-10%] right-[-20%] w-[700px] h-[700px] bg-purple-300/30 rounded-full filter blur-[100px] opacity-70 animate-blob animation-delay-2000 mix-blend-multiply"></div>
-        <!-- 底部：青色 -->
         <div class="absolute bottom-[-20%] left-[20%] w-[900px] h-[900px] bg-cyan-200/40 rounded-full filter blur-[100px] opacity-70 animate-blob animation-delay-4000 mix-blend-multiply"></div>
-        
-        <!-- 3. 科技网格 -->
         <div class="absolute inset-0 bg-grid-tech z-0 opacity-60"></div>
-        
-        <!-- 4. 漂浮元素 -->
-        <div class="absolute top-32 right-10 opacity-10 animate-float text-9xl rotate-12 text-slate-400 blur-[1px]">
-            <i class="fas fa-glasses"></i>
-        </div>
-        <div class="absolute bottom-40 left-10 opacity-10 animate-float-delayed text-8xl -rotate-12 text-blue-400 blur-[1px]">
-            <i class="fas fa-cube"></i>
-        </div>
+        <div class="absolute top-32 right-10 opacity-10 animate-float text-9xl rotate-12 text-slate-400 blur-[1px]"><i class="fas fa-glasses"></i></div>
+        <div class="absolute bottom-40 left-10 opacity-10 animate-float-delayed text-8xl -rotate-12 text-blue-400 blur-[1px]"><i class="fas fa-cube"></i></div>
     </div>
 
-    <!-- 1. 导航栏 (保持深色，形成反差酷炫感) -->
+    <!-- 1. 导航栏 -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/90 backdrop-blur-xl transition-all duration-300 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
                     <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain transition duration-300 filter brightness-200 contrast-150">
                     <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-cyan-400 transition duration-500">AI</span></span>
                 </div>
-                
-                <!-- 链接 -->
                 <div class="hidden md:flex space-x-10">
                     <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">首页</a>
                     <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">团队介绍</a>
@@ -220,8 +222,6 @@
                         <i class="fas fa-fire animate-pulse text-xs"></i> 加入我们
                     </a>
                 </div>
-
-                <!-- Github Only -->
                 <div>
                     <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group text-white shadow-[0_0_10px_rgba(34,211,238,0.2)]">
                         <i class="fab fa-github text-xl"></i>
@@ -271,22 +271,19 @@
     <!-- 3. Leader Profile Section -->
     <section id="team" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
-            
             <div class="flex items-end mb-12 gap-4">
                 <h2 class="text-4xl md:text-5xl font-bold text-slate-900">团队负责人</h2>
                 <div class="h-1 flex-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-transparent rounded-full mb-3 opacity-30"></div>
                 <i class="fas fa-id-card text-4xl text-purple-500 animate-float"></i>
             </div>
 
+            <!-- Bento Grid Layout for Leader -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-24">
-                
-                <!-- 1. Profile Card -->
+                <!-- Profile Card -->
                 <div class="lg:col-span-4 flex flex-col gap-6">
                     <div class="holo-border rounded-2xl p-[1px]">
                         <div class="bg-white rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden">
-                            <!-- 顶部装饰背景 -->
                             <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-blue-100/50 to-transparent"></div>
-                            
                             <div class="relative w-40 h-40 mt-4 mb-6 group">
                                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur opacity-40 group-hover:opacity-70 transition duration-500 animate-spin-slow"></div>
                                 <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white bg-white shadow-lg">
@@ -294,10 +291,8 @@
                                 </div>
                                 <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-white animate-pulse"></div>
                             </div>
-
                             <h3 class="text-3xl font-bold text-slate-900 mb-1">程思婕 (Ada)</h3>
                             <p class="text-blue-600 font-mono text-sm mb-4">清华大学 博士候选人</p>
-                            
                             <div class="w-full bg-blue-50/80 border border-blue-100 rounded-lg p-3 mb-6 text-left shadow-inner">
                                 <div class="flex items-center gap-2 mb-1">
                                     <span class="relative flex h-3 w-3">
@@ -310,7 +305,6 @@
                                     寻找对智能眼镜AI技术充满热情的全职员工及实习生。欢迎科研合作。
                                 </p>
                             </div>
-
                             <div class="flex flex-wrap justify-center gap-3 w-full">
                                 <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
                                     <i class="fab fa-github"></i> GitHub
@@ -463,7 +457,7 @@
 
             <!-- 4. Team Culture & Gallery -->
             <div class="grid md:grid-cols-2 gap-8 mb-20">
-                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-blue-400 transition duration-500 shine-effect bg-white/80">
+                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-blue-300 transition duration-500 shine-effect">
                     <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
                         <i class="fas fa-users-cog mr-3 text-blue-500"></i> 团队基因
                     </h3>
@@ -479,7 +473,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-purple-400 transition duration-500 shine-effect bg-white/80">
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-purple-300 transition duration-500 shine-effect">
                     <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
                         <i class="fas fa-bullseye mr-3 text-purple-500"></i> 我们的目标
                     </h3>
@@ -515,19 +509,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-64">
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
                         <img src="image/海边团建.png" alt="海边团建" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                             <span class="text-white font-bold">假日时光</span>
                         </div>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
                         <img src="image/聚餐时光.png" alt="聚餐时光" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                             <span class="text-white font-bold">团队聚餐</span>
                         </div>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
                         <img src="image/办公室日常.jpg" alt="办公室日常" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                             <span class="text-white font-bold">工作日常</span>
                         </div>
                     </div>
@@ -544,7 +538,7 @@
             </h2>
 
             <div class="text-center max-w-4xl mx-auto mb-16">
-                <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
                     <h3 class="text-xl font-bold text-purple-600 mb-4">研究概览</h3>
                     <p class="text-slate-600 leading-relaxed text-lg">
                         我们的研究致力于弥合物理世界与数字智能之间的鸿沟。通过构建<span class="text-slate-900 font-semibold">第一视角感知的多模态大模型</span>，我们赋予智能眼镜“看懂世界”的能力；通过<span class="text-slate-900 font-semibold">端侧高效训练与推理</span>，我们确保智能触手可及且隐私安全；通过探索<span class="text-slate-900 font-semibold">内隐知识</span>，让 AI 具备类似人类的直觉与常识。
@@ -622,8 +616,8 @@
         </div>
     </section>
 
-    <!-- 6. Join Us -->
-    <section id="careers" class="py-24 relative z-10 bg-gradient-to-b from-slate-50 to-blue-50/30">
+    <!-- 6. Join Us (Cool Nested Cards) -->
+    <section id="careers" class="py-24 relative z-10 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-xs font-mono tracking-widest uppercase mb-4">We Are Hiring</span>
@@ -644,56 +638,50 @@
                         <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition flex-shrink-0">正式岗位</h3>
                         
                         <!-- 滚动区域 -->
-                        <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-8">
-                            <!-- Job 1 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-2">AI研发工程师</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>负责大模型能力搭建，AI算法落地，后端系统架构设计与开发，支撑高并发AI服务。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>计算机硕士及以上；熟悉微服务架构(MySQL/Redis/Kafka/Docker)；精通Python/Java/Golang；有云开发及RAG/Agent落地经验。</p>
-                                </div>
+                        <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
+                            <!-- Job Item 1 -->
+                            <div class="job-item job-item-blue">
+                                <h4 class="text-lg font-bold text-blue-600 mb-1">AI研发工程师</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责大模型能力搭建，AI算法落地，后端系统架构设计与开发，支撑高并发AI服务。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">计算机硕士及以上；熟悉微服务架构(MySQL/Redis/Kafka/Docker)；精通Python/Java/Golang；有云开发及RAG/Agent落地经验。</p>
                             </div>
-                            <!-- Job 2 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-2">智能语音算法工程师</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>负责ASR核心技术优化，模型迭代，解决唤醒、降噪问题；端侧语音交互全链路优化。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>CS/EE硕士以上；熟练C++/Python；深入理解ASR(Conformer/Whisper)原理；熟悉PyTorch/TensorFlow。</p>
-                                </div>
+
+                            <!-- Job Item 2 -->
+                            <div class="job-item job-item-blue">
+                                <h4 class="text-lg font-bold text-blue-600 mb-1">智能语音算法工程师</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责ASR核心技术优化，模型迭代，解决唤醒、降噪问题；端侧语音交互全链路优化。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE硕士以上；熟练C++/Python；深入理解ASR(Conformer/Whisper)原理；熟悉PyTorch/TensorFlow。</p>
                             </div>
-                            <!-- Job 3 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-2">音频算法工程师 (前端算法)</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>研发音频AEC算法，满足回声消除指标；设计波束成形(Beamforming)算法；优化VAD。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>精通信号处理；熟悉波束成形；精通Matlab/Python及C/C++移植；有嵌入式/DSP优化经验。</p>
-                                </div>
+
+                            <!-- Job Item 3 -->
+                            <div class="job-item job-item-blue">
+                                <h4 class="text-lg font-bold text-blue-600 mb-1">音频算法工程师 (前端算法)</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">研发音频AEC算法，满足回声消除指标；设计波束成形(Beamforming)算法；优化VAD。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">精通信号处理；熟悉波束成形；精通Matlab/Python及C/C++移植；有嵌入式/DSP优化经验。</p>
                             </div>
-                            <!-- Job 4 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-2">语音系统工程师</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>负责AR/AI眼镜音频链路设计；主导音频风险标定；统筹DSP/MCU资源分配。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>消费类音频产品经验；精通AEC/Beamforming/VAD算法落地；熟悉高通/海思平台。</p>
-                                </div>
+
+                            <!-- Job Item 4 -->
+                            <div class="job-item job-item-blue">
+                                <h4 class="text-lg font-bold text-blue-600 mb-1">语音系统工程师</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">负责AR/AI眼镜音频链路设计；主导音频风险标定；统筹DSP/MCU资源分配。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">消费类音频产品经验；精通AEC/Beamforming/VAD算法落地；熟悉高通/海思平台。</p>
                             </div>
-                            <!-- Job 5 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-2">大模型算法工程师 (Memory)</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>研发场景化记忆算法，提升个性化存储与检索；优化用户画像与交互体验；构建记忆数据链路。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>CS/EE硕士以上；精通Python/PyTorch；有大模型微调、RAG、Agent-memory项目经验。</p>
-                                </div>
+
+                            <!-- Job Item 5 -->
+                            <div class="job-item job-item-blue">
+                                <h4 class="text-lg font-bold text-blue-600 mb-1">大模型算法工程师 (Memory)</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">研发场景化记忆算法，提升个性化存储与检索；优化用户画像与交互体验；构建记忆数据链路。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE硕士以上；精通Python/PyTorch；有大模型微调、RAG、Agent-memory项目经验。</p>
                             </div>
                         </div>
                     </div>
@@ -713,38 +701,32 @@
                         <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-purple-600 transition flex-shrink-0">实习岗位</h3>
                         
                         <!-- 滚动区域 -->
-                        <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-8">
+                        <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
                             <!-- Intern 1 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-purple-600 mb-2">大模型算法实习生</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>1. RAG/检索增强生成：构建优化RAG系统，向量检索，知识库构建。</p>
-                                    <p>2. 意图识别/NLP：构建意图识别与分类模型，优化Prompt。</p>
-                                    <p>3. AIGC/多模态：参与文生图、多模态生成模型训练调优。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>硕士/博士在读；熟练Python；熟悉Transformers/LLM原理；有RAG/NLP/Agent经验；有顶会论文(ACL/CVPR等)优先。</p>
-                                </div>
+                            <div class="job-item job-item-purple">
+                                <h4 class="text-lg font-bold text-purple-600 mb-1">大模型算法实习生</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">1. RAG/检索增强生成；2. 意图识别/NLP；3. AIGC/多模态。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">硕士/博士在读；熟练Python；熟悉Transformers/LLM原理；有RAG/NLP/Agent经验；有顶会论文(ACL/CVPR等)优先。</p>
                             </div>
+
                             <!-- Intern 2 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-purple-600 mb-2">语音算法实习生</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>持续优化ASR和TTS系统；跟踪前沿技术；负责云端服务架构与端侧算法优化；开发声纹识别。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>CS/EE本科及以上；熟练C++/Python；深入理解ASR/TTS原理(Conformer/Whisper/FastSpeech)；熟悉TensorFlow/PyTorch。</p>
-                                </div>
+                            <div class="job-item job-item-purple">
+                                <h4 class="text-lg font-bold text-purple-600 mb-1">语音算法实习生</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">持续优化ASR和TTS系统；跟踪前沿技术；负责云端服务架构与端侧算法优化；开发声纹识别。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">CS/EE本科及以上；熟练C++/Python；深入理解ASR/TTS原理(Conformer/Whisper/FastSpeech)；熟悉TensorFlow/PyTorch。</p>
                             </div>
+
                             <!-- Intern 3 -->
-                            <div>
-                                <h4 class="text-lg font-bold text-purple-600 mb-2">AI效能实习生</h4>
-                                <div class="text-sm text-slate-600 space-y-1">
-                                    <p class="font-semibold text-slate-800">职位描述:</p>
-                                    <p>开发AI Agent应用；针对研发部门设计AI Coding实施方案；筛选AI提效工具；解答工具使用问题。</p>
-                                    <p class="font-semibold text-slate-800 mt-2">职位要求:</p>
-                                    <p>本科及以上；了解LangGraph/AgentScope；熟悉Cursor/Claude等AI Coding工具；对AI工具有强烈兴趣。</p>
-                                </div>
+                            <div class="job-item job-item-purple">
+                                <h4 class="text-lg font-bold text-purple-600 mb-1">AI效能实习生</h4>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位描述</div>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">开发AI Agent应用；针对研发部门设计AI Coding实施方案；筛选AI提效工具；解答工具使用问题。</p>
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">职位要求</div>
+                                <p class="text-sm text-slate-600 leading-relaxed">本科及以上；了解LangGraph/AgentScope；熟悉Cursor/Claude等AI Coding工具；对AI工具有强烈兴趣。</p>
                             </div>
                         </div>
                     </div>
@@ -758,15 +740,15 @@
     </section>
 
     <!-- 7. Footer -->
-    <footer class="border-t border-slate-300 bg-slate-200 py-12">
+    <footer class="border-t border-slate-200 bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
                 <h4 class="font-bold text-xl text-slate-800 tracking-wider">Rayneo<span class="text-blue-600">AI</span></h4>
-                <p class="text-xs text-slate-600 mt-2">© 2025 Rayneo AI Lab. All rights reserved.</p>
+                <p class="text-xs text-slate-500 mt-2">© 2025 Rayneo AI Lab. All rights reserved.</p>
             </div>
             
             <div class="flex gap-6">
-                <a href="https://github.com/RayNeo-AI" target="_blank" class="text-slate-500 hover:text-black transition text-2xl hover:scale-110">
+                <a href="https://github.com/RayNeo-AI" target="_blank" class="text-slate-400 hover:text-black transition text-2xl hover:scale-110">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
