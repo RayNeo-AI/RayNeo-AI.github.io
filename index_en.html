@@ -8,18 +8,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         tech: {
-                            bg: '#f0f9ff',       /* Ice Blue Background (Sky-50) */
-                            card: '#ffffff',     /* Pure White Card */
-                            blue: '#0ea5e9',     /* Sky-500 */
-                            cyan: '#06b6d4',     /* Cyan-500 */
-                            purple: '#8b5cf6',   /* Violet-500 */
-                            pink: '#ec4899',     /* Pink */
-                            dark: '#0f172a',     
-                            text: '#334155'      /* Slate-700 */
+                            bg: '#020617',       /* Background: Dark Abyss */
+                            card: '#0f172a',     /* Card: Dark Slate */
+                            blue: '#38bdf8',     /* Neon Blue */
+                            cyan: '#22d3ee',     /* Neon Cyan */
+                            purple: '#c084fc',   /* Neon Purple */
+                            pink: '#f472b6',     /* Neon Pink */
+                            yellow: '#facc15',   
+                            text: '#e2e8f0'      /* Text: Light Grey */
                         }
                     },
                     animation: {
@@ -28,17 +29,18 @@
                         'float-delayed': 'float 6s ease-in-out 3s infinite',
                         'blob': 'blob 10s infinite',
                         'spin-slow': 'spin 15s linear infinite',
+                        'spin-reverse': 'spin 20s linear infinite reverse',
                         'text-shimmer': 'text-shimmer 3s ease-out infinite alternate',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -30px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.2)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         },
                         'text-shimmer': {
@@ -52,189 +54,208 @@
     </script>
     <style>
         body { 
-            background-color: #f0f9ff; 
-            color: #334155; 
+            background-color: #020617; 
+            color: #e2e8f0; 
             font-family: 'Inter', system-ui, -apple-system, sans-serif; 
             overflow-x: hidden; 
         }
         
-        /* Grid Background */
+        /* 1. Tech Grid (Dark Mode) */
         .bg-grid-tech {
-            background-size: 50px 50px;
+            background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
         }
 
-        /* 1. Glass Panel */
+        /* 2. Glass Panel (Dark Frosted) */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7); 
+            background: rgba(15, 23, 42, 0.6); 
             backdrop-filter: blur(20px);       
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 
-                0 4px 6px -1px rgba(14, 165, 233, 0.05), 
-                0 10px 15px -3px rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
         
         .glass-panel:hover {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #38bdf8;
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(34, 211, 238, 0.5);
             box-shadow: 
-                0 20px 40px -5px rgba(14, 165, 233, 0.2), 
-                0 0 20px rgba(56, 189, 248, 0.1);
+                0 0 25px rgba(34, 211, 238, 0.15),
+                0 10px 10px -5px rgba(0, 0, 0, 0.5);
             transform: translateY(-8px) scale(1.01);
             z-index: 10;
         }
 
-        /* 2. Job Card */
+        /* 3. Job Card Container (Dark) */
         .job-card {
             position: relative;
-            background: #ffffff;
+            background: #0f172a; /* Slate-900 */
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid #e0f2fe; 
+            border: 1px solid rgba(255,255,255,0.1); 
             height: 600px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
         .job-card:hover {
-            border-color: #38bdf8;
+            background: #1e293b; /* Slate-800 */
+            border-color: rgba(56, 189, 248, 0.5);
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
         }
 
+        /* Job Card Top Shine */
         .job-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #22d3ee, #38bdf8, #c084fc);
             background-size: 200% 100%;
             animation: text-shimmer 3s linear infinite;
         }
 
-        /* Inner Job Items */
+        /* 4. Inner Job Items (Dark Mode) */
         .job-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: #1e293b; /* Slate-800 */
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 0.75rem;
             padding: 1.25rem;
             transition: all 0.2s ease-in-out;
         }
 
+        /* Blue hover */
         .job-item-blue:hover {
-            background: #f0f9ff;
+            background: #172554; /* Blue-950 */
             border-color: #38bdf8;
-            box-shadow: 0 4px 12px -2px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
             transform: translateX(4px);
         }
 
+        /* Purple hover */
         .job-item-purple:hover {
-            background: #f5f3ff;
-            border-color: #a78bfa;
-            box-shadow: 0 4px 12px -2px rgba(139, 92, 246, 0.15);
+            background: #2e1065; /* Violet-950 */
+            border-color: #c084fc;
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.2);
             transform: translateX(4px);
         }
 
         /* Text Fluid Gradient */
         .text-fluid-gradient {
-            background: linear-gradient(270deg, #0284c7, #7c3aed, #0ea5e9, #0284c7);
+            background: linear-gradient(270deg, #22d3ee, #c084fc, #38bdf8, #22d3ee);
             background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: text-shimmer 5s linear infinite;
-            filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.2));
+            animation: text-shimmer 4s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
         }
 
         /* Leader Avatar Border */
         .holo-border {
             position: relative;
-            background: #fff;
+            background: #020617;
             z-index: 1;
-            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
         }
         .holo-border::before {
             content: "";
             position: absolute;
             inset: -3px;
             z-index: -1;
-            background: linear-gradient(45deg, #0ea5e9, #8b5cf6, #06b6d4);
+            background: linear-gradient(45deg, #22d3ee, #c084fc, #f472b6, #22d3ee);
             background-size: 400%;
             border-radius: inherit;
-            animation: border-anim 4s linear infinite;
+            animation: border-anim 6s linear infinite;
         }
         @keyframes border-anim { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
 
-        /* Scrollbar */
+        /* Scrollbar (Dark) */
         .custom-scroll::-webkit-scrollbar { width: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: #f0f9ff; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 3px; }
-        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
         
         /* Shine Effect */
         .shine-effect::before {
             content: "";
             position: absolute;
             top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
             transform: skewX(-25deg);
             transition: 0.5s;
             pointer-events: none;
         }
         .shine-effect:hover::before { animation: shine 0.75s; }
+        @keyframes shine { 100% { left: 150%; } }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-100 selection:text-cyan-900">
+<body class="antialiased selection:bg-tech-purple selection:text-white">
 
-    <!-- Global Background (Ice Cyber Style) -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#f0f9ff]">
-        <div class="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-100/50 via-cyan-50/30 to-transparent"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-blue-300/30 rounded-full filter blur-[100px] opacity-70 animate-blob mix-blend-multiply"></div>
-        <div class="absolute top-[-10%] right-[-20%] w-[700px] h-[700px] bg-purple-300/30 rounded-full filter blur-[100px] opacity-70 animate-blob animation-delay-2000 mix-blend-multiply"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[900px] h-[900px] bg-cyan-200/40 rounded-full filter blur-[100px] opacity-70 animate-blob animation-delay-4000 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-grid-tech z-0 opacity-60"></div>
-        <div class="absolute top-32 right-10 opacity-10 animate-float text-9xl rotate-12 text-slate-400 blur-[1px]"><i class="fas fa-glasses"></i></div>
-        <div class="absolute bottom-40 left-10 opacity-10 animate-float-delayed text-8xl -rotate-12 text-blue-400 blur-[1px]"><i class="fas fa-cube"></i></div>
+    <!-- Global Background FX (Dark Cyber) -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#020617]">
+        <!-- Base Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a] via-[#020617] to-black"></div>
+        
+        <!-- Volumetric Light -->
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120%] h-[800px] bg-gradient-radial from-tech-blue/20 via-transparent to-transparent opacity-70 blur-3xl"></div>
+
+        <!-- Rotating Beams -->
+        <div class="absolute top-[-50%] left-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-cyan/20 via-transparent to-transparent opacity-40 animate-spin-slow blur-[80px]"></div>
+        <div class="absolute bottom-[-50%] right-[-20%] w-[1000px] h-[1000px] bg-gradient-conic from-tech-purple/20 via-transparent to-transparent opacity-40 animate-spin-reverse blur-[80px]"></div>
+
+        <!-- High Intensity Aurora (Color Dodge) -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-tech-blue/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob"></div>
+            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-tech-purple/30 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-tech-pink/20 rounded-full mix-blend-color-dodge filter blur-[100px] animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <!-- Grid -->
+        <div class="absolute inset-0 bg-grid-tech z-0 opacity-40"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-32 right-10 opacity-20 animate-float text-9xl rotate-12 text-slate-500 blur-[1px] drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"><i class="fas fa-glasses"></i></div>
+        <div class="absolute bottom-40 left-10 opacity-20 animate-float-delayed text-8xl -rotate-12 text-tech-blue blur-[1px] drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"><i class="fas fa-cube"></i></div>
     </div>
 
-    <!-- 1. Navbar (Dark to ground the design) -->
-    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/90 backdrop-blur-xl transition-all duration-300 shadow-lg">
+    <!-- 1. Navbar -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/10 bg-[#0f172a]/70 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
-                    <img src="image/logo.png" alt="Rayneo Logo" class="h-8 w-auto object-contain transition duration-300 filter brightness-200 contrast-150">
-                    <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-cyan-400 transition duration-500">AI</span></span>
+                    <img src="image/logo.jpg" alt="Rayneo Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] group-hover:drop-shadow-[0_0_20px_rgba(34,211,238,1)] transition duration-300 rounded-md">
+                    <span class="font-bold text-xl tracking-wider text-white">Rayneo<span class="font-light text-tech-cyan group-hover:text-tech-purple transition duration-500 text-shadow-neon">AI</span></span>
                 </div>
                 
                 <!-- Links -->
                 <div class="hidden md:flex space-x-10 items-center">
-                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Home</a>
-                    <a href="#team" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Team</a>
-                    <a href="#research" class="text-sm font-medium text-slate-300 hover:text-white hover:text-shadow-lg transition duration-300">Research</a>
-                    <a href="#careers" class="text-sm font-bold text-cyan-400 hover:text-purple-400 transition duration-300 flex items-center gap-1">
+                    <a href="#home" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">Home</a>
+                    <a href="#team" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">Team</a>
+                    <a href="#research" class="text-sm font-medium text-slate-200 hover:text-white hover:text-tech-cyan transition duration-300">Research</a>
+                    <a href="#careers" class="text-sm font-bold text-tech-cyan hover:text-tech-purple transition duration-300 flex items-center gap-1">
                         <i class="fas fa-fire animate-pulse text-xs"></i> Careers
                     </a>
                 </div>
 
-                <!-- Right Side: Lang & Github -->
+                <!-- Right Side: Language & Github -->
                 <div class="flex items-center gap-4">
-                    <!-- Language Toggle Button (Links to Chinese version) -->
-                    <a href="index.html" class="flex items-center justify-center px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition text-xs font-bold text-white hover:text-cyan-400">
+                    <!-- Language Toggle (Links to index.html) -->
+                    <a href="index.html" class="flex items-center justify-center px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition text-xs font-bold text-white hover:text-tech-cyan">
                         中
                     </a>
 
                     <!-- Github -->
-                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group text-white shadow-[0_0_10px_rgba(34,211,238,0.2)]">
-                        <i class="fab fa-github text-xl"></i>
-                        <span class="text-sm font-medium hidden sm:inline">GitHub</span>
+                    <a href="https://github.com/RayNeo-AI" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition group hover:border-tech-cyan/80 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                        <i class="fab fa-github text-xl text-white group-hover:text-tech-cyan transition duration-300"></i>
+                        <span class="text-sm font-medium text-slate-200 group-hover:text-white hidden sm:inline">GitHub</span>
                     </a>
                 </div>
             </div>
@@ -244,35 +265,36 @@
     <!-- 2. Hero Section -->
     <section id="home" class="relative pt-40 pb-20 z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-200 bg-white/50 text-blue-600 text-xs font-mono mb-8 animate-pulse-slow shadow-sm backdrop-blur-sm">
-                <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-tech-cyan/50 bg-tech-cyan/10 text-tech-cyan text-xs font-mono mb-8 animate-pulse-slow shadow-[0_0_30px_rgba(34,211,238,0.4)]">
+                <span class="w-2 h-2 bg-tech-cyan rounded-full mr-2 animate-ping"></span>
                 RAYNEO LARGE MODEL ALGORITHM DEPT
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-slate-900 drop-shadow-sm">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-white drop-shadow-2xl">
                 Building Future <span class="text-fluid-gradient relative">Spatial Agents</span>
             </h1>
             
-            <p class="mt-4 text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+            <p class="mt-4 text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light">
                 We are the Rayneo Large Model Algorithm Department.<br>
-                Responsible for building <span class="text-slate-900 font-semibold border-b-2 border-cyan-200">Cloud-Edge Synergy AI Platforms</span> for smart glasses, and constructing a series of <span class="text-slate-900 font-semibold border-b-2 border-purple-200">Intelligent Agents</span>.<br>
-                From voice interaction to multimodal understanding, empowering glasses with true cognitive abilities.
+                Responsible for building <span class="text-white font-semibold drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">Cloud-Edge Synergy AI Platforms</span> for smart glasses, and constructing a series of <span class="text-white font-semibold drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">Intelligent Agents</span>.<br>
+                Empowering glasses with true cognitive abilities through voice interaction and multimodal understanding.
             </p>
 
             <div class="mt-12 flex justify-center gap-6">
-                <a href="#careers" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.6)] transition duration-300 transform hover:-translate-y-1">
-                    Join Us
+                <a href="#careers" class="px-8 py-4 bg-gradient-to-r from-tech-blue to-tech-cyan text-slate-900 font-bold rounded-lg hover:scale-105 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition duration-300 relative overflow-hidden group">
+                    <span class="relative z-10">Join Us</span>
+                    <div class="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition duration-300"></div>
                 </a>
-                <a href="#team" class="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-lg hover:border-blue-400 hover:text-blue-600 transition duration-300 shadow-sm hover:shadow-md">
+                <a href="#team" class="px-8 py-4 bg-transparent border border-white/20 text-white rounded-lg hover:border-tech-purple hover:text-tech-purple hover:bg-tech-purple/10 hover:shadow-[0_0_20px_rgba(192,132,252,0.5)] transition duration-300">
                     Meet the Team
                 </a>
             </div>
 
-            <div class="mt-20 flex flex-wrap justify-center gap-4 text-sm font-mono text-slate-500">
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-blue-400 hover:text-blue-600 hover:bg-white transition cursor-default shadow-sm"># On-Device ASR+NLU</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-purple-400 hover:text-purple-600 hover:bg-white transition cursor-default shadow-sm"># Intent Recognition</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-pink-400 hover:text-pink-600 hover:bg-white transition cursor-default shadow-sm"># Proactive Memory</span>
-                <span class="px-3 py-1 border border-slate-200 rounded bg-white/60 text-slate-600 hover:border-yellow-400 hover:text-yellow-600 hover:bg-white transition cursor-default shadow-sm"># Spatial Intelligence</span>
+            <div class="mt-20 flex flex-wrap justify-center gap-4 text-sm font-mono text-slate-300">
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-cyan hover:text-tech-cyan hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition cursor-default"># On-Device ASR+NLU</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-purple hover:text-tech-purple hover:shadow-[0_0_15px_rgba(192,132,252,0.4)] transition cursor-default"># Intent Recognition</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-pink hover:text-tech-pink hover:shadow-[0_0_15px_rgba(244,114,182,0.4)] transition cursor-default"># Proactive Memory</span>
+                <span class="px-3 py-1 border border-white/20 rounded bg-white/5 hover:border-tech-yellow hover:text-tech-yellow hover:shadow-[0_0_15px_rgba(250,204,21,0.4)] transition cursor-default"># Spatial Intelligence</span>
             </div>
         </div>
     </section>
@@ -282,9 +304,9 @@
         <div class="max-w-7xl mx-auto px-4">
             
             <div class="flex items-end mb-12 gap-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900">Team Leader</h2>
-                <div class="h-1 flex-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-transparent rounded-full mb-3 opacity-30"></div>
-                <i class="fas fa-id-card text-4xl text-purple-500 animate-float"></i>
+                <h2 class="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">Team Leader</h2>
+                <div class="h-1 flex-1 bg-gradient-to-r from-tech-cyan via-tech-purple to-transparent rounded-full mb-3 opacity-80 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
+                <i class="fas fa-id-card text-4xl text-tech-purple animate-float drop-shadow-[0_0_20px_rgba(192,132,252,0.8)]"></i>
             </div>
 
             <!-- Bento Grid Layout for Leader -->
@@ -293,46 +315,45 @@
                 <!-- 1. Profile Card -->
                 <div class="lg:col-span-4 flex flex-col gap-6">
                     <div class="holo-border rounded-2xl p-[1px]">
-                        <div class="bg-white rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden">
-                            <!-- Top Decor -->
-                            <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-blue-100/50 to-transparent"></div>
+                        <div class="bg-tech-card rounded-2xl p-6 h-full flex flex-col items-center text-center relative overflow-hidden bg-opacity-90 backdrop-blur-xl">
+                            <div class="absolute top-0 w-full h-32 bg-gradient-to-b from-tech-cyan/20 to-transparent"></div>
                             
                             <div class="relative w-40 h-40 mt-4 mb-6 group">
-                                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur opacity-40 group-hover:opacity-70 transition duration-500 animate-spin-slow"></div>
-                                <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white bg-white shadow-lg">
+                                <div class="absolute -inset-2 bg-gradient-to-r from-tech-cyan to-tech-pink rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500 animate-spin-slow"></div>
+                                <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/30 bg-black">
                                     <img src="image/SijieCheng.jpg" alt="Ada Cheng" class="w-full h-full object-cover">
                                 </div>
-                                <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-white animate-pulse"></div>
+                                <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-slate-900 animate-pulse"></div>
                             </div>
 
-                            <h3 class="text-3xl font-bold text-slate-900 mb-1">Sijie (Ada) Cheng</h3>
-                            <p class="text-blue-600 font-mono text-sm mb-4">Ph.D. Candidate @ Tsinghua Univ.</p>
+                            <h3 class="text-3xl font-bold text-white mb-1">Sijie (Ada) Cheng</h3>
+                            <p class="text-tech-cyan font-mono text-sm mb-4">Ph.D. Candidate @ Tsinghua Univ.</p>
                             
-                            <div class="w-full bg-blue-50/80 border border-blue-100 rounded-lg p-3 mb-6 text-left shadow-inner">
+                            <div class="w-full bg-tech-cyan/10 border border-tech-cyan/30 rounded-lg p-3 mb-6 text-left hover:bg-tech-cyan/20 transition duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
                                 <div class="flex items-center gap-2 mb-1">
                                     <span class="relative flex h-3 w-3">
-                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-pink opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-tech-pink shadow-[0_0_10px_#ff0055]"></span>
                                     </span>
-                                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wide">Hiring</span>
+                                    <span class="text-xs font-bold text-tech-pink uppercase tracking-wide drop-shadow-[0_0_5px_rgba(255,0,85,0.8)]">Hiring</span>
                                 </div>
-                                <p class="text-xs text-slate-600 leading-snug">
+                                <p class="text-xs text-slate-300 leading-snug">
                                     Looking for full-time employees and interns for AI in smart glasses. Open for research cooperation.
                                 </p>
                             </div>
 
                             <div class="flex flex-wrap justify-center gap-3 w-full">
-                                <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
+                                <a href="https://github.com/AdaCheng" target="_blank" class="flex-1 min-w-[100px] py-2 rounded bg-slate-800 hover:bg-slate-700 hover:text-tech-cyan hover:border-tech-cyan border border-slate-700 text-white text-sm transition flex items-center justify-center gap-2">
                                     <i class="fab fa-github"></i> GitHub
                                 </a>
-                                <a href="mailto:your-email@example.com" class="flex-1 min-w-[100px] py-2 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm transition flex items-center justify-center gap-2">
+                                <a href="mailto:your-email@example.com" class="flex-1 min-w-[100px] py-2 rounded bg-slate-800 hover:bg-slate-700 hover:text-tech-purple hover:border-tech-purple border border-slate-700 text-white text-sm transition flex items-center justify-center gap-2">
                                     <i class="fas fa-envelope"></i> Email
                                 </a>
                                 <div class="relative group flex-1 min-w-[100px]">
-                                    <button class="w-full py-2 rounded bg-green-50 border border-green-200 text-green-600 text-sm hover:bg-green-100 transition flex items-center justify-center gap-2">
+                                    <button class="w-full py-2 rounded bg-green-900/20 border border-green-800 text-green-400 text-sm hover:bg-green-900/40 hover:shadow-[0_0_15px_rgba(74,222,128,0.3)] transition flex items-center justify-center gap-2">
                                         <i class="fab fa-weixin"></i> WeChat
                                     </button>
-                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-slate-800 text-white text-xs font-bold rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap z-50">
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-white text-black text-xs font-bold rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap z-50">
                                         ID: AdaChengSijie
                                     </div>
                                 </div>
@@ -343,127 +364,127 @@
 
                 <!-- Leader Details -->
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2 glass-panel rounded-2xl p-8 shine-effect bg-white/80">
-                         <div class="absolute top-0 right-0 p-6 opacity-10">
-                            <i class="fas fa-brain text-8xl text-blue-900"></i>
+                    <div class="md:col-span-2 glass-panel rounded-2xl p-8 relative overflow-hidden shine-effect">
+                         <div class="absolute top-0 right-0 p-6 opacity-20">
+                            <i class="fas fa-brain text-9xl text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                            <i class="fas fa-lightbulb text-yellow-500 mr-2 drop-shadow-sm"></i> Research Focus
+                        <h4 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-lightbulb text-tech-yellow mr-2 shadow-yellow-500"></i> Research Focus
                         </h4>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
                             I am a second-year Ph.D. candidate at <strong>Tsinghua University</strong>, advised by Prof. Yang Liu. Previously received Master's from Fudan University.
                         </p>
-                        <p class="text-slate-800 font-medium mb-3 border-l-4 border-cyan-400 pl-3">
+                        <p class="text-white font-medium mb-3 border-l-4 border-tech-cyan pl-3">
                             "Egocentric Foundation Model represents the next generation of Foundation Models."
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                            <div class="bg-blue-50/80 rounded p-3 border border-blue-100 hover:border-blue-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-blue-500 mb-1 text-xl"><i class="fas fa-eye"></i></div>
-                                <div class="font-bold text-sm text-slate-800">Egocentric Understanding</div>
-                                <div class="text-xs text-slate-500 mt-1">EgoThink | VidEgoThink</div>
+                            <div class="bg-white/5 rounded p-3 border border-white/10 hover:border-tech-cyan hover:bg-tech-cyan/10 transition duration-300 cursor-default">
+                                <div class="text-tech-cyan mb-1 text-xl"><i class="fas fa-eye"></i></div>
+                                <div class="font-bold text-sm text-slate-200">Egocentric Understanding</div>
+                                <div class="text-xs text-slate-400 mt-1">EgoThink | VidEgoThink</div>
                             </div>
-                            <div class="bg-purple-50/80 rounded p-3 border border-purple-100 hover:border-purple-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-purple-500 mb-1 text-xl"><i class="fas fa-mobile-alt"></i></div>
-                                <div class="font-bold text-sm text-slate-800">On-Device Training</div>
-                                <div class="text-xs text-slate-500 mt-1">OpenChat | ConvLLaVA</div>
+                            <div class="bg-white/5 rounded p-3 border border-white/10 hover:border-tech-purple hover:bg-tech-purple/10 transition duration-300 cursor-default">
+                                <div class="text-tech-purple mb-1 text-xl"><i class="fas fa-mobile-alt"></i></div>
+                                <div class="font-bold text-sm text-slate-200">On-Device Training</div>
+                                <div class="text-xs text-slate-400 mt-1">OpenChat | ConvLLaVA</div>
                             </div>
-                            <div class="bg-pink-50/80 rounded p-3 border border-pink-100 hover:border-pink-400 hover:shadow-md transition duration-300 cursor-default">
-                                <div class="text-pink-500 mb-1 text-xl"><i class="fas fa-network-wired"></i></div>
-                                <div class="font-bold text-sm text-slate-800">Implicit Knowledge</div>
-                                <div class="text-xs text-slate-500 mt-1">FedGEMs | StableToolBench</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect bg-white/80">
-                        <h4 class="text-lg font-bold text-slate-800 mb-4 sticky top-0 bg-white/95 backdrop-blur-sm flex items-center z-10 py-2 border-b border-slate-100">
-                            <i class="fas fa-briefcase text-blue-500 mr-2"></i> Experience
-                        </h4>
-                        <div class="overflow-y-auto custom-scroll pr-2 space-y-6 pt-2">
-                            <div class="relative pl-6 border-l-2 border-blue-300">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
-                                <h5 class="text-sm font-bold text-slate-900">Rayneo</h5>
-                                <p class="text-xs text-blue-600 mb-1">Intern (Jan. 2025 - Present)</p>
-                                <p class="text-xs text-slate-500">Manager: Hongwei Li (CEO)</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">Tencent (Robotics X)</h5>
-                                <p class="text-xs text-slate-500 mb-1">Research Intern (2024)</p>
-                                <p class="text-xs text-slate-400">Manager: Lei Han</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">01.AI Company</h5>
-                                <p class="text-xs text-slate-500 mb-1">Pre-training Group Intern (2023-2024)</p>
-                                <p class="text-xs text-slate-400">Manager: Xiangang Li</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-slate-200">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">Sinovation Ventures</h5>
-                                <p class="text-xs text-slate-500 mb-1">Investment Intern (2023)</p>
-                            </div>
-                             <div class="relative pl-6 border-l-2 border-slate-200">
-                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-400 rounded-full"></div>
-                                <h5 class="text-sm font-bold text-slate-700">Shanghai AI Lab</h5>
-                                <p class="text-xs text-slate-500 mb-1">NLP Group (2022)</p>
+                            <div class="bg-white/5 rounded p-3 border border-white/10 hover:border-tech-pink hover:bg-tech-pink/10 transition duration-300 cursor-default">
+                                <div class="text-tech-pink mb-1 text-xl"><i class="fas fa-network-wired"></i></div>
+                                <div class="font-bold text-sm text-slate-200">Implicit Knowledge</div>
+                                <div class="text-xs text-slate-400 mt-1">FedGEMs | StableToolBench</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect bg-white/80">
-                        <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center sticky top-0 bg-white/95 backdrop-blur-sm z-10 py-2 border-b border-slate-100">
-                            <i class="fas fa-trophy text-yellow-500 mr-2"></i> Selected Awards
+                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect">
+                        <h4 class="text-lg font-bold text-white mb-4 sticky top-0 bg-transparent flex items-center z-10">
+                            <i class="fas fa-briefcase text-tech-blue mr-2"></i> Experience
                         </h4>
-                        <div class="overflow-y-auto custom-scroll pr-2 pt-2">
+                        <div class="overflow-y-auto custom-scroll pr-2 space-y-6">
+                            <div class="relative pl-6 border-l-2 border-tech-cyan">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-tech-cyan rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+                                <h5 class="text-sm font-bold text-white">Rayneo</h5>
+                                <p class="text-xs text-tech-cyan mb-1">Intern (Jan. 2025 - Present)</p>
+                                <p class="text-xs text-slate-400">Manager: Hongwei Li (CEO)</p>
+                            </div>
+                            <div class="relative pl-6 border-l-2 border-slate-600">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-500 rounded-full"></div>
+                                <h5 class="text-sm font-bold text-slate-200">Tencent (Robotics X)</h5>
+                                <p class="text-xs text-slate-400 mb-1">Research Intern (2024)</p>
+                                <p class="text-xs text-slate-500">Mentor: Lei Han</p>
+                            </div>
+                            <div class="relative pl-6 border-l-2 border-slate-600">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-600 rounded-full"></div>
+                                <h5 class="text-sm font-bold text-slate-200">01.AI Company</h5>
+                                <p class="text-xs text-slate-400 mb-1">Pre-training Group Intern (2023-2024)</p>
+                                <p class="text-xs text-slate-500">Mentor: Xiangang Li</p>
+                            </div>
+                            <div class="relative pl-6 border-l-2 border-slate-600">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-500 rounded-full"></div>
+                                <h5 class="text-sm font-bold text-slate-200">Sinovation Ventures</h5>
+                                <p class="text-xs text-slate-400 mb-1">Investment Intern (2023)</p>
+                            </div>
+                             <div class="relative pl-6 border-l-2 border-slate-600">
+                                <div class="absolute -left-[5px] top-1 w-2 h-2 bg-slate-500 rounded-full"></div>
+                                <h5 class="text-sm font-bold text-slate-200">Shanghai AI Lab</h5>
+                                <p class="text-xs text-slate-400 mb-1">NLP Group (2022)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-6 h-[400px] flex flex-col shine-effect">
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center sticky top-0 bg-transparent z-10">
+                            <i class="fas fa-trophy text-tech-yellow mr-2"></i> Selected Awards
+                        </h4>
+                        <div class="overflow-y-auto custom-scroll pr-2">
                             <ul class="space-y-3 text-sm">
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-star"></i></span>
-                                    <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">CAST Young Talents Project 2025</strong>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-star"></i></span>
+                                    <span class="text-slate-300">
+                                        <strong class="text-white block group-hover:text-tech-yellow transition">CAST Young Talents Project 2025</strong>
                                         Ph.D. Program - China Computer Federation
                                     </span>
                                 </li>
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-award"></i></span>
-                                    <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">Outstanding Paper Award</strong>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-award"></i></span>
+                                    <span class="text-slate-300">
+                                        <strong class="text-white block group-hover:text-tech-yellow transition">Outstanding Paper Award</strong>
                                         MFM-EAI Workshop @ ICML 2024
                                     </span>
                                 </li>
                                 <li class="flex gap-3 group">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-graduation-cap"></i></span>
-                                    <span class="text-slate-600">
-                                        <strong class="text-slate-900 block group-hover:text-blue-600 transition">National Scholarship</strong>
+                                    <span class="text-tech-yellow mt-1 group-hover:scale-125 transition"><i class="fas fa-graduation-cap"></i></span>
+                                    <span class="text-slate-300">
+                                        <strong class="text-white block group-hover:text-tech-yellow transition">National Scholarship</strong>
                                         China, 2021-2022
                                     </span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-scroll"></i></span>
-                                    <span class="text-slate-600">
+                                    <span class="text-tech-yellow mt-1"><i class="fas fa-scroll"></i></span>
+                                    <span class="text-slate-300">
                                         Outstanding Master’s Thesis Award (Shanghai Computer Society)
                                     </span>
                                 </li>
                                  <li class="flex gap-3">
-                                    <span class="text-yellow-500 mt-1"><i class="fas fa-basketball-ball"></i></span>
-                                    <span class="text-slate-600">
+                                    <span class="text-tech-yellow mt-1"><i class="fas fa-basketball-ball"></i></span>
+                                    <span class="text-slate-300">
                                         1st Place, Tencent Basketball Association (2024)
                                     </span>
                                 </li>
                             </ul>
                             
-                            <h4 class="text-lg font-bold text-slate-800 mt-8 mb-4 flex items-center">
-                                <i class="fas fa-microphone text-pink-500 mr-2"></i> Recent Talks
+                            <h4 class="text-lg font-bold text-white mt-8 mb-4 flex items-center">
+                                <i class="fas fa-microphone text-tech-pink mr-2"></i> Recent Talks
                             </h4>
-                             <ul class="space-y-3 text-xs text-slate-500">
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.11</span> - Core Competitiveness of Scientific Research in the Era of Large Models
+                             <ul class="space-y-3 text-xs text-slate-400">
+                                <li class="border-l-2 border-slate-700 pl-3 hover:border-tech-pink hover:text-white transition cursor-default">
+                                    <span class="text-white font-semibold">2024.11</span> - Core Competitiveness of Scientific Research in the Era of Large Models
                                 </li>
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.09</span> - EgoThink @ ZhiDX
+                                <li class="border-l-2 border-slate-700 pl-3 hover:border-tech-pink hover:text-white transition cursor-default">
+                                    <span class="text-white font-semibold">2024.09</span> - EgoThink @ ZhiDX
                                 </li>
-                                <li class="border-l-2 border-slate-200 pl-3 hover:border-pink-400 hover:text-slate-900 transition cursor-default">
-                                    <span class="text-slate-700 font-semibold">2024.03</span> - OpenChat @ Max-likelihood Community
+                                <li class="border-l-2 border-slate-700 pl-3 hover:border-tech-pink hover:text-white transition cursor-default">
+                                    <span class="text-white font-semibold">2024.03</span> - OpenChat @ Max-likelihood Community
                                 </li>
                             </ul>
                         </div>
@@ -473,46 +494,46 @@
 
             <!-- 4. Team Culture & Gallery -->
             <div class="grid md:grid-cols-2 gap-8 mb-20">
-                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-blue-300 transition duration-500 shine-effect">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                        <i class="fas fa-users-cog mr-3 text-blue-500"></i> Team DNA
+                 <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-tech-cyan/50 transition duration-500 shine-effect">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fas fa-users-cog mr-3 text-tech-cyan drop-shadow-[0_0_8px_#22d3ee]"></i> Team DNA
                     </h3>
-                    <ul class="space-y-4 text-slate-600">
+                    <ul class="space-y-4 text-slate-300">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-3 mt-1">▹</span>
+                            <span class="text-tech-cyan mr-3 mt-1">▹</span>
                             <span><strong>Young & Geeky:</strong> The youngest team in the company, with high talent density and a geeky atmosphere.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-3 mt-1">▹</span>
+                            <span class="text-tech-cyan mr-3 mt-1">▹</span>
                             <span><strong>Cloud-Edge Synergy:</strong> Responsible for building AI platforms for smart glasses and constructing intelligent agents.</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-purple-300 transition duration-500 shine-effect">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                        <i class="fas fa-bullseye mr-3 text-purple-500"></i> Our Goals
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-tech-purple/50 transition duration-500 shine-effect">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fas fa-bullseye mr-3 text-tech-purple drop-shadow-[0_0_8px_#c084fc]"></i> Our Goals
                     </h3>
                     <div class="space-y-4">
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold group-hover/item:scale-110 transition">Fast</div>
+                            <div class="w-10 h-10 rounded bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold group-hover/item:scale-110 transition">Fast</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Fast Efficiency</h4>
-                                <p class="text-xs text-slate-500">Complete the "Cognition-Implementation-Innovation" loop rapidly.</p>
+                                <h4 class="text-white font-bold">Fast Efficiency</h4>
+                                <p class="text-xs text-slate-400">Complete the "Cognition-Implementation-Innovation" loop rapidly.</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-bold group-hover/item:scale-110 transition">Adapt</div>
+                            <div class="w-10 h-10 rounded bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold group-hover/item:scale-110 transition">Adapt</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Strong Adaptability</h4>
-                                <p class="text-xs text-slate-500">React instantly to technological breakthroughs and adjust course.</p>
+                                <h4 class="text-white font-bold">Strong Adaptability</h4>
+                                <p class="text-xs text-slate-400">React instantly to technological breakthroughs and adjust course.</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 group/item">
-                            <div class="w-10 h-10 rounded bg-pink-100 flex items-center justify-center text-pink-600 font-bold group-hover/item:scale-110 transition">Good</div>
+                            <div class="w-10 h-10 rounded bg-pink-500/20 flex items-center justify-center text-pink-400 font-bold group-hover/item:scale-110 transition">Good</div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Great Culture</h4>
-                                <p class="text-xs text-slate-500">Mutual achievement, AI for Good, changing the world.</p>
+                                <h4 class="text-white font-bold">Great Culture</h4>
+                                <p class="text-xs text-slate-400">Mutual achievement, AI for Good, changing the world.</p>
                             </div>
                         </div>
                     </div>
@@ -521,24 +542,24 @@
 
             <!-- Gallery -->
             <div class="space-y-6">
-                <h3 class="text-xl font-bold text-slate-500 uppercase tracking-widest mb-4">Team Gallery</h3>
+                <h3 class="text-xl font-bold text-slate-400 uppercase tracking-widest mb-4">Team Gallery</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-64">
-                    <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/海边团建.png" alt="Team Building" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">Holiday Spirit</span>
+                    <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-2xl">
+                        <img src="image/海边团建.png" alt="Team Building" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                            <span class="text-white font-bold drop-shadow-md">Holiday Spirit</span>
                         </div>
                     </div>
-                    <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/聚餐时光.png" alt="Team Dinner" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">Team Dinner</span>
+                    <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-2xl">
+                        <img src="image/聚餐时光.png" alt="Team Dinner" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                            <span class="text-white font-bold drop-shadow-md">Team Dinner</span>
                         </div>
                     </div>
-                    <div class="rounded-xl overflow-hidden border border-slate-200 relative group shadow-sm hover:shadow-xl transition-all">
-                        <img src="image/办公室日常.jpg" alt="Office Life" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                            <span class="text-white font-bold">Office Life</span>
+                    <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-2xl">
+                        <img src="image/办公室日常.jpg" alt="Office Life" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                            <span class="text-white font-bold drop-shadow-md">Office Life</span>
                         </div>
                     </div>
                 </div>
@@ -546,84 +567,85 @@
         </div>
     </section>
 
-    <!-- 5. Research Directions -->
-    <section id="research" class="py-24 bg-white relative border-y border-slate-100">
+    <!-- 5. Research Directions (Overview + 3 Directions) -->
+    <section id="research" class="py-24 bg-black/20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f172a] pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <h2 class="text-3xl font-bold mb-8 flex items-center text-slate-900">
-                <span class="text-blue-500 mr-2">/</span> Research Directions
+            <h2 class="text-3xl font-bold mb-8 flex items-center text-white">
+                <span class="text-tech-cyan mr-2">/</span> Research Directions
             </h2>
 
             <div class="text-center max-w-4xl mx-auto mb-16">
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
-                    <h3 class="text-xl font-bold text-purple-600 mb-4">Overview</h3>
-                    <p class="text-slate-600 leading-relaxed text-lg">
-                        Our research aims to bridge the gap between the physical world and digital intelligence. By building <span class="text-slate-900 font-semibold">Egocentric Multimodal Large Models</span>, we empower smart glasses to "understand" the world; through <span class="text-slate-900 font-semibold">Efficient On-Device Training & Inference</span>, we ensure intelligence is accessible and privacy-secure; by exploring <span class="text-slate-900 font-semibold">Implicit Knowledge</span>, we enable AI to possess intuition and common sense similar to humans.
+                <div class="glass-panel p-8 rounded-2xl border border-tech-purple/20 shine-effect">
+                    <h3 class="text-xl font-bold text-tech-purple mb-4">Overview</h3>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        Our research aims to bridge the gap between the physical world and digital intelligence. By building <span class="text-white font-semibold">Egocentric Multimodal Large Models</span>, we empower smart glasses to "understand" the world; through <span class="text-white font-semibold">Efficient On-Device Training & Inference</span>, we ensure intelligence is accessible and privacy-secure; by exploring <span class="text-white font-semibold">Implicit Knowledge</span>, we enable AI to possess intuition and common sense similar to humans.
                     </p>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Direction 1 -->
-                <div class="glass-panel rounded-xl p-8 hover:border-blue-400 transition duration-300 group h-full shine-effect bg-white">
-                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-blue-100 transition group-hover:scale-110">
-                        <i class="fas fa-eye text-3xl text-blue-500"></i>
+                <div class="glass-panel rounded-xl p-8 hover:border-tech-blue/50 transition duration-300 group h-full shine-effect">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-6 group-hover:bg-tech-blue/20 transition group-hover:scale-110">
+                        <i class="fas fa-eye text-3xl text-slate-400 group-hover:text-tech-blue"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition">Egocentric Understanding</h3>
-                    <ul class="space-y-4 text-slate-500 text-sm">
+                    <h3 class="text-xl font-bold text-white mb-6 group-hover:text-tech-blue transition">Egocentric Understanding</h3>
+                    <ul class="space-y-4 text-slate-400 text-sm">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
                             <span><strong>Achievement 1:</strong> Efficient spatiotemporal modeling for egocentric video.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
                             <span><strong>Achievement 2:</strong> Intent recognition for dynamic object interaction in complex scenes.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-blue mr-2 mt-1">●</span>
                             <span><strong>Achievement 3:</strong> EgoThink: Evaluating the first-person thinking capability of multimodal large models.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Direction 2 -->
-                <div class="glass-panel rounded-xl p-8 hover:border-purple-400 transition duration-300 group h-full shine-effect bg-white">
-                    <div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center mb-6 group-hover:bg-purple-100 transition group-hover:scale-110">
-                        <i class="fas fa-microchip text-3xl text-purple-500"></i>
+                <div class="glass-panel rounded-xl p-8 hover:border-tech-purple/50 transition duration-300 group h-full shine-effect">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-6 group-hover:bg-tech-purple/20 transition group-hover:scale-110">
+                        <i class="fas fa-microchip text-3xl text-slate-400 group-hover:text-tech-purple"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-purple-600 transition">On-Device Training</h3>
-                    <ul class="space-y-4 text-slate-500 text-sm">
+                    <h3 class="text-xl font-bold text-white mb-6 group-hover:text-tech-purple transition">On-Device Training</h3>
+                    <ul class="space-y-4 text-slate-400 text-sm">
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
                             <span><strong>Achievement 1:</strong> On-device LLM training architecture under extremely low power consumption.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
                             <span><strong>Achievement 2:</strong> Model quantization and compression techniques tailored for smart glasses.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-purple-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-purple mr-2 mt-1">●</span>
                             <span><strong>Achievement 3:</strong> Cloud-Edge collaborative continuous learning mechanisms.</span>
                         </li>
                     </ul>
                 </div>
 
                  <!-- Direction 3 -->
-                 <div class="glass-panel rounded-xl p-8 hover:border-pink-400 transition duration-300 group h-full shine-effect bg-white">
-                    <div class="w-16 h-16 rounded-full bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-100 transition group-hover:scale-110">
-                        <i class="fas fa-brain text-3xl text-pink-500"></i>
+                 <div class="glass-panel rounded-xl p-8 hover:border-tech-pink/50 transition duration-300 group h-full shine-effect">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-6 group-hover:bg-tech-pink/20 transition group-hover:scale-110">
+                        <i class="fas fa-brain text-3xl text-slate-400 group-hover:text-tech-pink"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-6 group-hover:text-pink-600 transition">Implicit Knowledge</h3>
-                    <ul class="space-y-4 text-slate-500 text-sm">
+                    <h3 class="text-xl font-bold text-white mb-6 group-hover:text-tech-pink transition">Implicit Knowledge</h3>
+                    <ul class="space-y-4 text-slate-400 text-sm">
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
                             <span><strong>Achievement 1:</strong> Mechanism analysis and suppression methods for large model hallucinations.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
                             <span><strong>Achievement 2:</strong> Extracting commonsense knowledge graphs from unstructured data.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-pink-500 mr-2 mt-1">●</span>
+                            <span class="text-tech-pink mr-2 mt-1">●</span>
                             <span><strong>Achievement 3:</strong> Research on rapid inference paths simulating human intuition.</span>
                         </li>
                     </ul>
@@ -632,122 +654,123 @@
         </div>
     </section>
 
-    <!-- 6. Join Us -->
-    <section id="careers" class="py-24 relative z-10 bg-slate-50">
+    <!-- 6. Join Us (Refactored: Social + Campus Recruitment) -->
+    <section id="careers" class="py-24 relative z-10">
+        <div class="absolute inset-0 bg-gradient-to-t from-tech-blue/5 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-xs font-mono tracking-widest uppercase mb-4">We Are Hiring</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Join Us, Create the Future</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg">
+                <span class="inline-block py-1 px-3 rounded-full bg-tech-cyan/10 border border-tech-cyan/20 text-tech-cyan text-xs font-mono tracking-widest uppercase mb-4">We Are Hiring</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Join Us, Create the Future</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
                     We are looking for partners passionate about AI, Computer Vision, and AR.<br>We offer competitive compensation, massive GPU computing support, and the opportunity to work with top talent.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Card 1: Social Recruitment (Full-time) -->
-                <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect bg-white">
+                <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect">
                     <div class="flex-grow flex flex-col overflow-hidden">
                         <div class="flex justify-between items-start mb-4 flex-shrink-0">
-                            <div class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold">Social Recruitment</div>
-                            <span class="text-blue-500 font-bold text-xl"><i class="fas fa-briefcase"></i></span>
+                            <div class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded border border-blue-500/30 font-bold">Social Recruitment</div>
+                            <span class="text-tech-cyan font-bold text-xl"><i class="fas fa-briefcase"></i></span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition flex-shrink-0">Full-time Positions</h3>
+                        <h3 class="text-2xl font-bold text-white mb-6 group-hover:text-tech-cyan transition flex-shrink-0">Full-time Positions</h3>
                         
                         <!-- Scroll Area -->
                         <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
                             <!-- Job Item 1 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">AI R&D Engineer</h4>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">AI R&D Engineer</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Responsible for large model capability building, AI algorithm implementation, backend system architecture design, and supporting high-concurrency AI services.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Responsible for large model capability building, AI algorithm implementation, backend system architecture design, and supporting high-concurrency AI services.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Master's degree in CS or above; familiar with microservices architecture (MySQL/Redis/Kafka/Docker); proficient in Python/Java/Golang; experience in cloud development and RAG/Agent implementation.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Master's degree in CS or above; familiar with microservices architecture (MySQL/Redis/Kafka/Docker); proficient in Python/Java/Golang; experience in cloud development and RAG/Agent implementation.</p>
                             </div>
 
                             <!-- Job Item 2 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Intelligent Speech Algorithm Engineer</h4>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Intelligent Speech Algorithm Engineer</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Optimize core ASR technologies, model iteration, solve wake-up and noise reduction issues; optimize end-to-end voice interaction on devices.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Optimize core ASR technologies, model iteration, solve wake-up and noise reduction issues; optimize end-to-end voice interaction on devices.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Master's in CS/EE or above; proficient in C++/Python; deep understanding of ASR (Conformer/Whisper) principles; familiar with PyTorch/TensorFlow.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Master's in CS/EE or above; proficient in C++/Python; deep understanding of ASR (Conformer/Whisper) principles; familiar with PyTorch/TensorFlow.</p>
                             </div>
 
                             <!-- Job Item 3 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Audio Algorithm Engineer (Frontend)</h4>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Audio Algorithm Engineer (Frontend)</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop audio AEC algorithms, meet echo cancellation metrics; design Beamforming algorithms; optimize VAD.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Develop audio AEC algorithms, meet echo cancellation metrics; design Beamforming algorithms; optimize VAD.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Proficient in signal processing; familiar with beamforming; proficient in Matlab/Python and C/C++ porting; experience in embedded/DSP optimization.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Proficient in signal processing; familiar with beamforming; proficient in Matlab/Python and C/C++ porting; experience in embedded/DSP optimization.</p>
                             </div>
 
                             <!-- Job Item 4 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Speech System Engineer</h4>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Speech System Engineer</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Responsible for AR/AI glasses audio link design; lead audio risk calibration; coordinate DSP/MCU resource allocation.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Responsible for AR/AI glasses audio link design; lead audio risk calibration; coordinate DSP/MCU resource allocation.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Experience with consumer audio products; proficient in AEC/Beamforming/VAD algorithm implementation; familiar with Qualcomm/Hisilicon platforms.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Experience with consumer audio products; proficient in AEC/Beamforming/VAD algorithm implementation; familiar with Qualcomm/Hisilicon platforms.</p>
                             </div>
 
                             <!-- Job Item 5 -->
                             <div class="job-item job-item-blue">
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Large Model Algorithm Engineer (Memory)</h4>
+                                <h4 class="text-lg font-bold text-tech-blue mb-1">Large Model Algorithm Engineer (Memory)</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop scenario-based memory algorithms, improve personalized storage and retrieval; optimize user profiling and interaction experience; build memory data pipelines.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Develop scenario-based memory algorithms, improve personalized storage and retrieval; optimize user profiling and interaction experience; build memory data pipelines.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Master's in CS/EE or above; proficient in Python/PyTorch; experience in LLM fine-tuning, RAG, and Agent-memory projects.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Master's in CS/EE or above; proficient in Python/PyTorch; experience in LLM fine-tuning, RAG, and Agent-memory projects.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://www.zhipin.com/web/geek/jobs?city=101280600&query=%E9%9B%B7%E9%B8%9F%E5%88%9B%E6%96%B0" target="_blank" class="block text-center mt-6 w-full py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition font-bold shadow-md hover:shadow-blue-200 relative z-20 flex-shrink-0">
+                    <a href="https://www.zhipin.com/web/geek/jobs?city=101280600&query=%E9%9B%B7%E9%B8%9F%E5%88%9B%E6%96%B0" target="_blank" class="block text-center mt-6 w-full py-3 bg-tech-blue/10 border border-tech-blue/50 text-tech-blue rounded hover:bg-tech-blue hover:text-black transition font-bold group-hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] relative z-20 flex-shrink-0">
                         Chat Now
                     </a>
                 </div>
 
                 <!-- Card 2: Campus Recruitment (Internship) -->
-                <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect bg-white">
+                <div class="job-card p-8 group cursor-pointer flex flex-col justify-between shine-effect">
                     <div class="flex-grow flex flex-col overflow-hidden">
                         <div class="flex justify-between items-start mb-4 flex-shrink-0">
-                            <div class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded font-bold">Campus Recruitment</div>
-                            <span class="text-purple-500 font-bold text-xl"><i class="fas fa-graduation-cap"></i></span>
+                            <div class="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded border border-purple-500/30 font-bold">Campus Recruitment</div>
+                            <span class="text-tech-purple font-bold text-xl"><i class="fas fa-graduation-cap"></i></span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-6 group-hover:text-purple-600 transition flex-shrink-0">Intern Positions</h3>
+                        <h3 class="text-2xl font-bold text-white mb-6 group-hover:text-tech-purple transition flex-shrink-0">Intern Positions</h3>
                         
                         <!-- Scroll Area -->
                         <div class="flex-grow overflow-y-auto custom-scroll pr-2 space-y-4">
                             <!-- Intern 1 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">Large Model Algorithm Intern</h4>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">Large Model Algorithm Intern</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">1. RAG: Build/optimize RAG systems, vector retrieval, KB construction. <br> 2. Intent Recognition/NLP: Build intent classification models, optimize Prompts. <br> 3. AIGC/Multimodal: Participate in text-to-image, multimodal generation model training.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">1. RAG: Build/optimize RAG systems, vector retrieval, KB construction. <br> 2. Intent Recognition/NLP: Build intent classification models, optimize Prompts. <br> 3. AIGC/Multimodal: Participate in text-to-image, multimodal generation model training.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Master's/Ph.D. student; proficient in Python; familiar with Transformers/LLM principles; experience in RAG/NLP/Agent; top conference papers (ACL/CVPR etc.) preferred.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Master's/Ph.D. student; proficient in Python; familiar with Transformers/LLM principles; experience in RAG/NLP/Agent; top conference papers (ACL/CVPR etc.) preferred.</p>
                             </div>
 
                             <!-- Intern 2 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">Speech Algorithm Intern</h4>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">Speech Algorithm Intern</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Continuously optimize ASR and TTS systems; track cutting-edge technologies; responsible for cloud service architecture and on-device algorithm optimization; develop voiceprint recognition.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Continuously optimize ASR and TTS systems; track cutting-edge technologies; responsible for cloud service architecture and on-device algorithm optimization; develop voiceprint recognition.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Bachelor's in CS/EE or above; proficient in C++/Python; deep understanding of ASR/TTS principles (Conformer/Whisper/FastSpeech); familiar with TensorFlow/PyTorch.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Bachelor's in CS/EE or above; proficient in C++/Python; deep understanding of ASR/TTS principles (Conformer/Whisper/FastSpeech); familiar with TensorFlow/PyTorch.</p>
                             </div>
 
                             <!-- Intern 3 -->
                             <div class="job-item job-item-purple">
-                                <h4 class="text-lg font-bold text-purple-600 mb-1">AI Efficiency Intern</h4>
+                                <h4 class="text-lg font-bold text-tech-purple mb-1">AI Efficiency Intern</h4>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Description</div>
-                                <p class="text-sm text-slate-600 leading-relaxed mb-3">Develop AI Agent applications; design AI Coding implementation plans for R&D; screen AI efficiency tools; support tool usage.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-3">Develop AI Agent applications; design AI Coding implementation plans for R&D; screen AI efficiency tools; support tool usage.</p>
                                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirements</div>
-                                <p class="text-sm text-slate-600 leading-relaxed">Bachelor's or above; understand LangGraph/AgentScope; familiar with AI Coding tools like Cursor/Claude; strong interest in AI tools.</p>
+                                <p class="text-sm text-slate-300 leading-relaxed">Bachelor's or above; understand LangGraph/AgentScope; familiar with AI Coding tools like Cursor/Claude; strong interest in AI tools.</p>
                             </div>
                         </div>
                     </div>
 
-                    <a href="https://m.zhipin.com/job_detail/5a7a8717dc5e6c5603F939S8GVBX.html?ka=job_list_9_blank&lid=1GGohgMta6a.search.9" target="_blank" class="block text-center mt-6 w-full py-3 bg-purple-600 text-white rounded hover:bg-purple-700 transition font-bold shadow-md hover:shadow-purple-200 relative z-20 flex-shrink-0">
+                    <a href="https://m.zhipin.com/job_detail/5a7a8717dc5e6c5603F939S8GVBX.html?ka=job_list_9_blank&lid=1GGohgMta6a.search.9" target="_blank" class="block text-center mt-6 w-full py-3 bg-tech-purple/10 border border-tech-purple/50 text-tech-purple rounded hover:bg-tech-purple hover:text-white transition font-bold group-hover:shadow-[0_0_15px_rgba(192,132,252,0.4)] relative z-20 flex-shrink-0">
                         Chat Now
                     </a>
                 </div>
@@ -756,15 +779,15 @@
     </section>
 
     <!-- 7. Footer -->
-    <footer class="border-t border-slate-200 bg-white py-12">
+    <footer class="border-t border-white/10 bg-[#020617] py-12">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <h4 class="font-bold text-xl text-slate-800 tracking-wider">Rayneo<span class="text-blue-600">AI</span></h4>
+                <h4 class="font-bold text-xl text-white tracking-wider">Rayneo<span class="text-tech-blue">AI</span></h4>
                 <p class="text-xs text-slate-500 mt-2">© 2025 Rayneo AI Lab. All rights reserved.</p>
             </div>
             
             <div class="flex gap-6">
-                <a href="https://github.com/RayNeo-AI" target="_blank" class="text-slate-400 hover:text-black transition text-2xl hover:scale-110">
+                <a href="https://github.com/RayNeo-AI" target="_blank" class="text-slate-400 hover:text-white transition text-2xl hover:scale-110">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
